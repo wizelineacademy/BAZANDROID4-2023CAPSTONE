@@ -34,7 +34,7 @@ Estos son los requerimientos principales que evaluaremos:
 Para publicar tu trabajo, deberás seguir estos pasos:
 
 1. Crear un `pull request` con tu código, apuntando a la rama `master`
-2. Llenar este [formato]()
+2. Llenar este [formato](https://forms.gle/32jzE4HVK9evpkC26)
 3. Mantente al pendiente de la retroalimentación.
 4. Genera los cambios conforme a los comentarios de tu mentor.
 
