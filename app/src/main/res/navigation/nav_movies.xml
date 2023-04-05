@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_movies"
+    app:startDestination="@id/homeMovieFragment">
+
+    <fragment
+        android:id="@+id/homeMovieFragment"
+        android:name="mx.jramon.subias.dbmovieproyect.movies.ui.fragments.HomeMovieFragment"
+        android:label="fragment_home_movie"
+        tools:layout="@layout/fragment_home_movie" />
+</navigation>
