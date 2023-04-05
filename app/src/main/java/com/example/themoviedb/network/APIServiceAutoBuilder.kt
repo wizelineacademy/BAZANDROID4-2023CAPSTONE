@@ -1,7 +1,9 @@
 package com.example.themoviedb.network
 
+import com.example.themoviedb.BuildConfig
 import com.example.themoviedb.util.ResultWrapper
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,10 +17,10 @@ abstract class APIServiceAutoBuilder<T> {
     companion object {
         inline fun <reified T>getInstanceRetrofit(baseUrl: String): T {
             val okHttpClient = HttpLoggingInterceptor().run {
-                level = HttpLoggingInterceptor.Level.BODY
+                level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
                 OkHttpClient.Builder()
                     .addInterceptor(this)
-                    .addInterceptor(ApiKeyInterceptor("61d7cb2732da6def41add30787cfd905"))
+                    .addInterceptor(ApiKeyInterceptor(BuildConfig.MOVIES_API_KEY))
                     .build()
             }
 
@@ -31,7 +33,7 @@ abstract class APIServiceAutoBuilder<T> {
             return retrofit.create(T::class.java)
         }
 
-        suspend fun <T> safeApiCall(dispatcher: CoroutineDispatcher, apiCall: suspend () -> T): ResultWrapper<T> {
+        suspend fun <T> safeApiCall(dispatcher: CoroutineDispatcher = Dispatchers.IO, apiCall: suspend () -> T): ResultWrapper<T> {
             return withContext(dispatcher) {
                 try {
                     ResultWrapper.Success(apiCall.invoke())
@@ -43,7 +45,7 @@ abstract class APIServiceAutoBuilder<T> {
                             ResultWrapper.Error(code, throwable.message())
                         }
                         else -> {
-                            ResultWrapper.Error(0, "")
+                            ResultWrapper.Error(0, "Something went wrong")
                         }
                     }
                 }
