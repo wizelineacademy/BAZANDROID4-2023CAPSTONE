@@ -16,7 +16,7 @@ fun List<NowPlayingLocal>.toModel(): List<MovieModel> {
     return map {
         MovieModel(
             title = it.title,
-            imageUrl = "https://image.tmdb.org/t/p/w500/".plus(it.posterPath)
+            imageUrl = it.posterPath
         )
     }
 }

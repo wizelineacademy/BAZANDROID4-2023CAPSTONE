@@ -1,9 +1,8 @@
 package com.example.themoviedb.data.model
 
-import com.example.themoviedb.data.datasource.local.LatestLocal
-import com.example.themoviedb.data.datasource.local.NowPlayingLocal
-import com.example.themoviedb.data.datasource.local.TopRatedLocal
 import com.google.gson.annotations.SerializedName
+
+const val BASE_URL_POSTER = "https://image.tmdb.org/t/p/w500/"
 
 data class MovieResponse(
     @SerializedName("page")
@@ -45,34 +44,4 @@ data class MovieResponse(
         @SerializedName("vote_count")
         val voteCount: Int
     )
-}
-
-fun List<MovieResponse.Result>.toNowPlayingEntity(): List<NowPlayingLocal> {
-    return mapIndexed { i, it ->
-        NowPlayingLocal(
-            id = i,
-            title = it.title,
-            posterPath = it.posterPath
-        )
-    }
-}
-
-fun List<MovieResponse.Result>.toLatestEntity(): List<LatestLocal> {
-    return mapIndexed { i, it ->
-        LatestLocal(
-            id = i,
-            title = it.title,
-            posterPath = it.posterPath
-        )
-    }
-}
-
-fun List<MovieResponse.Result>.toTopRatedEntity(): List<TopRatedLocal> {
-    return mapIndexed { i, it ->
-        TopRatedLocal(
-            id = i,
-            title = it.title,
-            posterPath = it.posterPath
-        )
-    }
 }

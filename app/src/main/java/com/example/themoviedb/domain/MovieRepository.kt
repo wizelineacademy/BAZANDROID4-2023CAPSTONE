@@ -1,15 +1,10 @@
 package com.example.themoviedb.domain
 
+import com.example.themoviedb.util.ResultWrapper
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
-    suspend fun getNowPlaying()
+    suspend fun getNowPlaying(): Flow<ResultWrapper<List<MovieModel>>>
     suspend fun getLatest()
-    suspend fun getTopRated()
-
-    fun getNowPlayingStream(): Flow<List<MovieModel>>
-    fun getLatestStream(): Flow<List<MovieModel>>
-    fun getTopRatedStream(): Flow<List<MovieModel>>
-
-    fun callNowPlaying(): Flow<List<MovieModel>>
+    suspend fun getTopRated(): ResultWrapper<List<MovieModel>>
 }

@@ -12,6 +12,7 @@ import com.example.themoviedb.databinding.FragmentNowPlayingBinding
 import com.example.themoviedb.presentation.adapter.MovieAdapter
 import com.example.themoviedb.presentation.adapter.MovieAdapter.Companion.MovieDiffCallback
 import com.example.themoviedb.presentation.viewmodel.MovieViewModel
+import com.example.themoviedb.util.ResultWrapper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -48,9 +49,16 @@ class NowPlayingFragment : Fragment() {
         }
 
         lifecycleScope.launch(Dispatchers.IO) {
-            movieViewModel.nowPlayingFlow.collect{
-                withContext(Dispatchers.Main) {
-                    movieAdapter.submitList(it)
+            movieViewModel.nowPlayingState.collect {
+                it?.let {
+                    when (it) {
+                        is ResultWrapper.Error -> {}
+                        is ResultWrapper.Success -> {
+                            withContext(Dispatchers.Main) {
+                                movieAdapter.submitList(it.data)
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -4,8 +4,8 @@ import com.example.themoviedb.data.model.MovieResponse
 import com.example.themoviedb.network.APIServiceAutoBuilder
 import retrofit2.http.GET
 
+const val BASE_URL_API = "https://api.themoviedb.org/3/"
 interface MovieApiService {
-
     @GET("movie/now_playing")
     suspend fun getNowPlayingMovies(): MovieResponse
 
@@ -18,7 +18,7 @@ interface MovieApiService {
     class Builder: APIServiceAutoBuilder<MovieApiService>() {
 
         override fun build(): MovieApiService {
-            return getInstanceRetrofit("https://api.themoviedb.org/3/")
+            return getInstanceRetrofit(BASE_URL_API)
         }
     }
 }
