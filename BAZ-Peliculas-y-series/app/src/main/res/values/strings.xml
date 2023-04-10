@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BAZ Películas y series</string>
+    <string name="title_streaming">Playing Now</string>
+    <string name="title_trending">Most Popular</string>
+    <string name="title_movie_detail">Movie Detail</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="youtube_api_key">AIzaSyAN0pAXDqX6NEbb4XXjgLhacGMB1AVryCQ"</string>
+</resources>
