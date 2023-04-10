@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import mx.jramon.subias.dbmovieproyect.utils.LoadingLottie
 import mx.jramon.subias.dbmovieproyect.GlobalViewModel

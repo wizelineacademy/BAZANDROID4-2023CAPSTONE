@@ -28,7 +28,7 @@ data class MovieDetails(
     @SerializedName("tagline") @Expose val tagline:String?,
     @SerializedName("title") @Expose val title:String,
     @SerializedName("video") @Expose val video:Boolean,
-    @SerializedName("vote_average") @Expose val vote_average:Double,
+    @SerializedName("vote_average") @Expose val vote_average:Float,
     @SerializedName("vote_count") @Expose val vote_count:Int
 )
 

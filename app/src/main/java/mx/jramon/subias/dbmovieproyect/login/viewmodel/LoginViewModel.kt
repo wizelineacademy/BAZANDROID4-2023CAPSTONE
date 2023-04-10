@@ -2,10 +2,13 @@ package mx.jramon.subias.dbmovieproyect.login.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import mx.jramon.subias.dbmovieproyect.network.FirebaseCommunication
 import mx.jramon.subias.dbmovieproyect.GlobalViewModel
+import javax.inject.Inject
 
-class LoginViewModel : GlobalViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor() : GlobalViewModel() {
 
     private val firebase: FirebaseCommunication by lazy { FirebaseCommunication() }
 

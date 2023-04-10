@@ -2,6 +2,7 @@ package mx.jramon.subias.dbmovieproyect.login
 
 import android.content.Intent
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import mx.jramon.subias.dbmovieproyect.login.viewmodel.LoginViewModel
 import mx.jramon.subias.dbmovieproyect.movies.MoviesActivity
 import mx.jramon.subias.dbmovieproyect.network.FirebaseCommunication
@@ -9,6 +10,7 @@ import mx.jramon.subias.dbmovieproyect.R
 import mx.jramon.subias.dbmovieproyect.base.BaseActivity
 import mx.jramon.subias.dbmovieproyect.databinding.ActivtyLoginRootBinding
 
+@AndroidEntryPoint
 class LoginActivity: BaseActivity<ActivtyLoginRootBinding>() {
 
     private val vModel: LoginViewModel by viewModels()
