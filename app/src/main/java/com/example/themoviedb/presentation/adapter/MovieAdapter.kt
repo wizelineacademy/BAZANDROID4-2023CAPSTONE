@@ -15,6 +15,16 @@ class MovieAdapter(
     private val itemCallback: DiffUtil.ItemCallback<MovieModel>
 ): ListAdapter<MovieModel, MovieAdapter.MovieVH>(itemCallback) {
 
+    private var itemClickListener: ItemClickListener? = null
+
+    fun interface ItemClickListener {
+        fun onItemClick(movie: MovieModel)
+    }
+
+    fun setItemClickListener(listener: ItemClickListener) {
+        itemClickListener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieVH {
         val binding = DataBindingUtil.inflate<ItemMovieBinding>(
             LayoutInflater.from(parent.context),
@@ -31,6 +41,12 @@ class MovieAdapter(
 
     inner class MovieVH(itemView: ViewDataBinding) : RecyclerView.ViewHolder(itemView.root) {
         private val binding = itemView as ItemMovieBinding
+
+        init {
+            binding.cardMovie.setOnClickListener {
+                itemClickListener?.onItemClick(getItem(adapterPosition))
+            }
+        }
 
         fun bind(item: MovieModel) {
             binding.movie = item

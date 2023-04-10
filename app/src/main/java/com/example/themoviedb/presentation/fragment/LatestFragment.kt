@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
-import com.example.themoviedb.databinding.FragmentNowPlayingBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.themoviedb.databinding.FragmentLatestBinding
 import com.example.themoviedb.presentation.adapter.MovieAdapter
-import com.example.themoviedb.presentation.adapter.MovieAdapter.Companion.MovieDiffCallback
 import com.example.themoviedb.presentation.viewmodel.MovieViewModel
 import com.example.themoviedb.util.ResultWrapper
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,41 +18,41 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
-class NowPlayingFragment : Fragment() {
+class LatestFragment : Fragment() {
 
+    private lateinit var binding: FragmentLatestBinding
     private val movieViewModel: MovieViewModel by viewModels()
-    private val movieAdapter = MovieAdapter(MovieDiffCallback)
-    private lateinit var binding: FragmentNowPlayingBinding
+    private val movieAdapter = MovieAdapter(MovieAdapter.MovieDiffCallback)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         if (::binding.isInitialized.not()) {
-            binding = FragmentNowPlayingBinding.inflate(inflater, container, false)
+            binding = FragmentLatestBinding.inflate(inflater, container, false)
         }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieViewModel.callNowPlayingMovies()
+        movieViewModel.callLatestMovie()
 
-        binding.rvMovies.apply {
+        binding.rvLatest.apply {
             adapter = movieAdapter.apply {
                 setItemClickListener { _ -> }
             }
-            layoutManager = GridLayoutManager(requireContext(), 3)
+            layoutManager = LinearLayoutManager(requireContext())
         }
 
         lifecycleScope.launch(Dispatchers.IO) {
-            movieViewModel.nowPlayingState.collect {
+            movieViewModel.latestState.collect {
                 it?.let {
-                    when (it) {
+                    when(it) {
                         is ResultWrapper.Error -> {}
                         is ResultWrapper.Success -> {
                             withContext(Dispatchers.Main) {
-                                movieAdapter.submitList(it.data)
+                                movieAdapter.submitList(mutableListOf(it.data))
                             }
                         }
                     }

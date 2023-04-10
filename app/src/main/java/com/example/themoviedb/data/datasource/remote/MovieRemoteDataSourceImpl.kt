@@ -1,7 +1,6 @@
 package com.example.themoviedb.data.datasource.remote
 
 import com.example.themoviedb.data.mapper.transformToDomain
-import com.example.themoviedb.data.model.MovieResponse
 import com.example.themoviedb.data.service.MovieApiService
 import com.example.themoviedb.domain.MovieModel
 import com.example.themoviedb.network.APIServiceAutoBuilder
@@ -26,9 +25,17 @@ class MovieRemoteDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun callLatestMovies(): ResultWrapper<MovieResponse> {
-        return APIServiceAutoBuilder.safeApiCall {
+    override suspend fun callLatestMovies(): ResultWrapper<MovieModel> {
+        val response = APIServiceAutoBuilder.safeApiCall {
             apiService.getLatestMovies()
+        }
+        return when(response) {
+            is ResultWrapper.Success -> {
+                ResultWrapper.Success(data = response.data.transformToDomain())
+            }
+            is ResultWrapper.Error -> {
+                ResultWrapper.Error(code = response.code, message = response.message)
+            }
         }
     }
 

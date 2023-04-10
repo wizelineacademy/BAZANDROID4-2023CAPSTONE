@@ -28,16 +28,22 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getLatest() {
-
+    override suspend fun getLatest(): Flow<ResultWrapper<MovieModel>> {
+        return flow {
+            emit(remoteDataSource.callLatestMovies())
+        }
     }
 
-    override suspend fun getTopRated(): ResultWrapper<List<MovieModel>>  {
-        val response = remoteDataSource.callTopRatedMovies().apply {
-            if (this is ResultWrapper.Success) {
-                localDataSource.saveTopRated(data.toTopRatedEntities())
+    override suspend fun getTopRated(): Flow<ResultWrapper<List<MovieModel>>>  {
+        return flow {
+            val response = remoteDataSource.callTopRatedMovies()
+            if (response is ResultWrapper.Success) {
+                localDataSource.saveTopRated(response.data.toTopRatedEntities())
+            }
+            emit(response)
+            localDataSource.getTopRated().collect {
+                emit(ResultWrapper.Success(it.toModel()))
             }
         }
-        return response
     }
 }

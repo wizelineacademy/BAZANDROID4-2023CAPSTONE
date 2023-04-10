@@ -7,5 +7,25 @@
     <fragment
         android:id="@+id/nowPlayingFragment"
         android:name="com.example.themoviedb.presentation.fragment.NowPlayingFragment"
-        android:label="NowPlayingFragment" />
+        android:label="NowPlayingFragment" >
+        <action
+            android:id="@+id/action_nowPlayingFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topRatedFragment"
+        android:name="com.example.themoviedb.presentation.fragment.TopRatedFragment"
+        android:label="TopRatedFragment" >
+        <action
+            android:id="@+id/action_topRatedFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/latestFragment"
+        android:name="com.example.themoviedb.presentation.fragment.LatestFragment"
+        android:label="LatestFragment" />
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.example.themoviedb.presentation.fragment.MovieDetailFragment"
+        android:label="MovieDetailFragment" />
 </navigation>

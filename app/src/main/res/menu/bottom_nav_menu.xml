@@ -4,16 +4,16 @@
     <item
         android:id="@id/nowPlayingFragment"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Now Playing" />
+        android:title="@string/text_menu_now_playing" />
 
     <item
-        android:id="@+id/latestFragment"
+        android:id="@id/latestFragment"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Latest" />
+        android:title="@string/text_menu_latest" />
 
     <item
-        android:id="@+id/topRatedFragment"
+        android:id="@id/topRatedFragment"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Top Rated" />
+        android:title="@string/text_menu_top_rated" />
 
 </menu>

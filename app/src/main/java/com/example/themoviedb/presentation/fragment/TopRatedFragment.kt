@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.themoviedb.databinding.FragmentNowPlayingBinding
+import com.example.themoviedb.databinding.FragmentTopRatedBinding
 import com.example.themoviedb.presentation.adapter.MovieAdapter
-import com.example.themoviedb.presentation.adapter.MovieAdapter.Companion.MovieDiffCallback
 import com.example.themoviedb.presentation.viewmodel.MovieViewModel
 import com.example.themoviedb.util.ResultWrapper
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,27 +18,28 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
-class NowPlayingFragment : Fragment() {
+class TopRatedFragment : Fragment() {
 
     private val movieViewModel: MovieViewModel by viewModels()
-    private val movieAdapter = MovieAdapter(MovieDiffCallback)
-    private lateinit var binding: FragmentNowPlayingBinding
+    private val movieAdapter = MovieAdapter(MovieAdapter.MovieDiffCallback)
+    private lateinit var binding: FragmentTopRatedBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         if (::binding.isInitialized.not()) {
-            binding = FragmentNowPlayingBinding.inflate(inflater, container, false)
+            binding = FragmentTopRatedBinding.inflate(inflater, container, false)
         }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieViewModel.callNowPlayingMovies()
 
-        binding.rvMovies.apply {
+        movieViewModel.callTopRatedMovies()
+
+        binding.rvTopRated.apply {
             adapter = movieAdapter.apply {
                 setItemClickListener { _ -> }
             }
@@ -47,7 +47,7 @@ class NowPlayingFragment : Fragment() {
         }
 
         lifecycleScope.launch(Dispatchers.IO) {
-            movieViewModel.nowPlayingState.collect {
+            movieViewModel.topRatedState.collect{
                 it?.let {
                     when (it) {
                         is ResultWrapper.Error -> {}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1019018738033",
+    "project_id": "capstone-401da",
+    "storage_bucket": "capstone-401da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019018738033:android:7b83b4cf1df4ba3bb75ed0",
+        "android_client_info": {
+          "package_name": "com.example.themoviedb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019018738033-ptl6nq3raorp7888odmkqf5aj9nduvrp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.themoviedb",
+            "certificate_hash": "9ce3dd4beec9258cd37ab24016344dd251beb2e5"
+          }
+        },
+        {
+          "client_id": "1019018738033-k20lvpe93dvvvq6gs2vs4tst8nv1pus2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvXELwwu5kEmsAf-eKXCHyKhqtsKNvqXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019018738033-k20lvpe93dvvvq6gs2vs4tst8nv1pus2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

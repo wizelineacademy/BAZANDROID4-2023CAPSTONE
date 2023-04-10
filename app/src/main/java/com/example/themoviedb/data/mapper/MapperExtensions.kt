@@ -3,6 +3,7 @@ package com.example.themoviedb.data.mapper
 import com.example.themoviedb.data.datasource.local.NowPlayingLocal
 import com.example.themoviedb.data.datasource.local.TopRatedLocal
 import com.example.themoviedb.data.model.BASE_URL_POSTER
+import com.example.themoviedb.data.model.LatestResponse
 import com.example.themoviedb.data.model.MovieResponse
 import com.example.themoviedb.domain.MovieModel
 
@@ -33,4 +34,11 @@ fun MovieResponse.transformToDomain(): List<MovieModel> {
             imageUrl = BASE_URL_POSTER.plus(it.posterPath)
         )
     }
+}
+
+fun LatestResponse.transformToDomain(): MovieModel {
+    return MovieModel(
+        title = title.orEmpty(),
+        imageUrl = BASE_URL_POSTER.plus(poster_path.orEmpty())
+    )
 }
