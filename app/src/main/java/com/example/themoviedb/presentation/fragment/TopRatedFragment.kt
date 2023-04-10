@@ -40,9 +40,7 @@ class TopRatedFragment : Fragment() {
         movieViewModel.callTopRatedMovies()
 
         binding.rvTopRated.apply {
-            adapter = movieAdapter.apply {
-                setItemClickListener { _ -> }
-            }
+            adapter = movieAdapter
             layoutManager = GridLayoutManager(requireContext(), 3)
         }
 

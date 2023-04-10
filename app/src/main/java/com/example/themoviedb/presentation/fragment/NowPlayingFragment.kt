@@ -40,9 +40,7 @@ class NowPlayingFragment : Fragment() {
         movieViewModel.callNowPlayingMovies()
 
         binding.rvMovies.apply {
-            adapter = movieAdapter.apply {
-                setItemClickListener { _ -> }
-            }
+            adapter = movieAdapter
             layoutManager = GridLayoutManager(requireContext(), 3)
         }
 

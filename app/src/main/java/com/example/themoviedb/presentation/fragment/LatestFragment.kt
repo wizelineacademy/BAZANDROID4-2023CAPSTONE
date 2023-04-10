@@ -39,9 +39,7 @@ class LatestFragment : Fragment() {
         movieViewModel.callLatestMovie()
 
         binding.rvLatest.apply {
-            adapter = movieAdapter.apply {
-                setItemClickListener { _ -> }
-            }
+            adapter = movieAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
 
