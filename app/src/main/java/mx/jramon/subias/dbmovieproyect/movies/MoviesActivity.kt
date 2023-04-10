@@ -25,6 +25,8 @@ class MoviesActivity : BaseActivity<ActivityMoviesRootBinding>() {
 
     override fun initView() {
 
+
+
     }
 
 }

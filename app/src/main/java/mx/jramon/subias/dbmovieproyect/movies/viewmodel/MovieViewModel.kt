@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import mx.jramon.subias.dbmovieproyect.GlobalViewModel
 import mx.jramon.subias.dbmovieproyect.movies.domain.MovieRepository
@@ -15,7 +16,7 @@ import java.io.IOException
 
 class MovieViewModel : GlobalViewModel() {
 
-    private val movieRepository: MovieRepository by lazy { MovieRepository() }
+    private val movieRepository = MovieRepository()
 
     private val diposable = CompositeDisposable()
 
@@ -29,7 +30,7 @@ class MovieViewModel : GlobalViewModel() {
     val listMovieTopRated: LiveData<List<MovieEntity>> get() = _listMovieTopRated
 
     fun getListPopularMovies(){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val popularMovie = movieRepository.getListPopularMovie()
             popularMovie
                 .observeOn(Schedulers.io())
@@ -53,7 +54,7 @@ class MovieViewModel : GlobalViewModel() {
 
 
     fun getListPopularTvSerie() {
-        viewModelScope.launch() {
+        viewModelScope.launch(Dispatchers.IO) {
             val tvSeriesPopular = movieRepository.getListPopularTvSerie()
             tvSeriesPopular
                 .observeOn(Schedulers.io())
@@ -75,12 +76,12 @@ class MovieViewModel : GlobalViewModel() {
     }
 
     fun getListMovieTopRated(){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val topRatedMovies = movieRepository.getMovieTopRated()
             topRatedMovies
                 .observeOn(Schedulers.io())
                 .subscribe({
-                    _listMovies.postValue(it.results)
+                    _listMovieTopRated.postValue(it.results)
                 },{
                     val errorMsg = when (it) {
                         is HttpException -> "Error de conexión"
