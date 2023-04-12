@@ -1,10 +1,10 @@
-package mx.jossprogramming.jlmovieswizel.data.database.repository
+package mx.jossprogramming.databasemovies.repository
 
-import mx.jossprogramming.jlmovieswizel.data.database.dao.MoviesDao
-import mx.jossprogramming.jlmovieswizel.data.database.entitys.GenreEntity
-import mx.jossprogramming.jlmovieswizel.data.database.entitys.MovieEntity
-import mx.jossprogramming.jlmovieswizel.data.database.entitys.MovieGenresCrossRef
-import mx.jossprogramming.jlmovieswizel.data.database.entitys.MoviesWithGenres
+import mx.jossprogramming.databasemovies.dao.MoviesDao
+import mx.jossprogramming.databasemovies.entitys.GenreEntity
+import mx.jossprogramming.databasemovies.entitys.MovieEntity
+import mx.jossprogramming.databasemovies.entitys.MovieGenresCrossRef
+import mx.jossprogramming.databasemovies.entitys.MoviesWithGenres
 import javax.inject.Inject
 
 class MoviesRespository @Inject constructor(

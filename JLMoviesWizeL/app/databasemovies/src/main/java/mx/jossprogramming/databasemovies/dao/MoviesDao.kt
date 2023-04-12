@@ -1,10 +1,10 @@
-package mx.jossprogramming.jlmovieswizel.data.database.dao
+package mx.jossprogramming.databasemovies.dao
 
 import androidx.room.*
-import mx.jossprogramming.jlmovieswizel.data.database.entitys.GenreEntity
-import mx.jossprogramming.jlmovieswizel.data.database.entitys.MovieEntity
-import mx.jossprogramming.jlmovieswizel.data.database.entitys.MovieGenresCrossRef
-import mx.jossprogramming.jlmovieswizel.data.database.entitys.MoviesWithGenres
+import mx.jossprogramming.databasemovies.entitys.GenreEntity
+import mx.jossprogramming.databasemovies.entitys.MovieEntity
+import mx.jossprogramming.databasemovies.entitys.MovieGenresCrossRef
+import mx.jossprogramming.databasemovies.entitys.MoviesWithGenres
 
 @Dao
 interface MoviesDao {

@@ -1,4 +1,4 @@
-package mx.jossprogramming.jlmovieswizel.data.database.entitys
+package mx.jossprogramming.databasemovies.entitys
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

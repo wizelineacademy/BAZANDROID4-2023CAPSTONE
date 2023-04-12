@@ -7,8 +7,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import mx.jossprogramming.jlmovieswizel.data.database.AppDatabase
-import mx.jossprogramming.jlmovieswizel.data.database.dao.MoviesDao
+import mx.jossprogramming.databasemovies.AppDatabase
+import mx.jossprogramming.databasemovies.dao.MoviesDao
+
 import javax.inject.Singleton
 
 //TODO CONFIGURACIÓN DE ROOM A TRAVÉS DE HILT

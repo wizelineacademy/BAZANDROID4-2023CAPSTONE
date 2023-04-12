@@ -112,6 +112,7 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     testImplementation("androidx.room:room-testing:$room_version")
+    implementation project(path: ':app:databasemovies')
 
     //RXJAVA
     implementation 'io.reactivex.rxjava2:rxjava:2.2.9'

@@ -1,7 +1,7 @@
 package mx.jossprogramming.jlmovieswizel.data.models
 
 import com.google.gson.annotations.SerializedName
-import mx.jossprogramming.jlmovieswizel.data.database.entitys.MovieEntity
+import mx.jossprogramming.databasemovies.entitys.MovieEntity
 import java.io.Serializable
 
 data class DetailMovies(

@@ -9,9 +9,9 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import mx.jossprogramming.jlmovieswizel.data.database.entitys.GenreEntity
-import mx.jossprogramming.jlmovieswizel.data.database.entitys.MovieGenresCrossRef
-import mx.jossprogramming.jlmovieswizel.data.database.repository.MoviesRespository
+import mx.jossprogramming.databasemovies.entitys.GenreEntity
+import mx.jossprogramming.databasemovies.entitys.MovieGenresCrossRef
+import mx.jossprogramming.databasemovies.repository.MoviesRespository
 import mx.jossprogramming.jlmovieswizel.data.models.DetailMovies
 import mx.jossprogramming.jlmovieswizel.data.models.getGenres
 import mx.jossprogramming.jlmovieswizel.data.models.toEntity
