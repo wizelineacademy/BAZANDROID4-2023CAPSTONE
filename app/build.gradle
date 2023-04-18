@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -24,11 +27,23 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
+    }
+    flavorDimensions "default"
+    productFlavors {
+        development {
+            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/"'
+            buildConfigField "String", "BASE_URL_IMAGES", '"https://image.tmdb.org/"'
+            //buildConfigField "String", "AUTH_BEARER_API_KEY", '"5e11b2efdbf9db48f1ccfd64bb9e0542"'
+            //buildConfigField "String", "YOUTUBE_KEY", '"AIzaSyA9AbL6w9QwJ45n8U-W5Zgxb34TyUCWw0Y"'
+        }
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 
@@ -41,4 +56,29 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation 'com.google.firebase:firebase-auth:21.3.0'
+    implementation platform('com.google.firebase:firebase-bom:31.5.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+
+    //ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.3"
+    implementation "androidx.activity:activity-ktx:1.6.0"
+
+    //Gson
+    implementation "com.google.code.gson:gson:2.10"
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+
+    // Moshi
+    implementation 'com.squareup.moshi:moshi:1.14.0'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.14.0'
 }
