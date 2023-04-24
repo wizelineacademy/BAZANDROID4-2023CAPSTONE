@@ -60,7 +60,7 @@ fun  SignUpScreen(loginViewModel: LoginViewModel, navController: NavHostControll
                 Toast.makeText(context, "Ingresa información valida", Toast.LENGTH_SHORT).show()
             }else if(!email.matches(emailPattern))
                 Toast.makeText(context, "correo invalido", Toast.LENGTH_SHORT).show()
-            else if(password == passwordConfirm)
+            else if(password != passwordConfirm)
                 Toast.makeText(context, "Las contraseñas no coinciden.", Toast.LENGTH_SHORT).show()
             else
                 loginViewModel.authCreateUser(email,password)

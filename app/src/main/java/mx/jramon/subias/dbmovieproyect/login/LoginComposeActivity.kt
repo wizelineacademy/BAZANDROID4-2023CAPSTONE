@@ -15,7 +15,9 @@ import mx.jramon.subias.dbmovieproyect.login.ui.SignUpScreen
 import mx.jramon.subias.dbmovieproyect.login.ui.routes.LoginRoutes
 import mx.jramon.subias.dbmovieproyect.login.viewmodel.LoginViewModel
 import mx.jramon.subias.dbmovieproyect.movies.MovieActivity
+import mx.jramon.subias.dbmovieproyect.movies.MoviesActivity
 import mx.jramon.subias.dbmovieproyect.movies.domain.model.MovieEntity
+import mx.jramon.subias.dbmovieproyect.network.FirebaseCommunication
 
 
 @AndroidEntryPoint
@@ -23,6 +25,7 @@ class LoginComposeActivity : ComponentActivity() {
 
     private val loginViewModel: LoginViewModel by viewModels()
     lateinit var navController: NavHostController
+    private val firebase: FirebaseCommunication by lazy { FirebaseCommunication() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,11 +44,24 @@ class LoginComposeActivity : ComponentActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if(firebase.auth.currentUser != null){
+            goToMovieActivity()
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         loginViewModel.validUser.observe(this) {
             if (it)
-                startActivity(Intent(this, MovieActivity::class.java))
+                goToMovieActivity()
         }
+    }
+
+    private fun goToMovieActivity(){
+        startActivity(Intent(this, MoviesActivity::class.java).apply {
+            this.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        })
     }
 }
