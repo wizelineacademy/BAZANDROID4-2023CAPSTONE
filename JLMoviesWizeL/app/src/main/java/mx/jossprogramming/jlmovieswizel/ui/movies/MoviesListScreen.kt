@@ -23,8 +23,8 @@ import coil.compose.SubcomposeAsyncImage
 import mx.jossprogramming.jlmovieswizel.R
 import mx.jossprogramming.jlmovieswizel.common.Constantes
 import mx.jossprogramming.jlmovieswizel.common.Constantes.PARAM_ID_MOVIE
-import mx.jossprogramming.jlmovieswizel.data.models.DetailMovies
 import mx.jossprogramming.jlmovieswizel.viewmodel.MoviesViewModel
+import mx.jossprogramming.remote.models.DetailMovies
 
 @Composable
 fun MoviesListScreen(viewModel: MoviesViewModel) {

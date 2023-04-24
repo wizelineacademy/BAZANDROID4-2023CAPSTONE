@@ -5,7 +5,11 @@ import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
 
-//TODO MODELO RELACIONAL PELÍCULAS Y GÉNEROS
+/**
+ * Clase que sirve como modelo relacional en room entre las películas y sus gérenerod
+ *
+ * @author Jose Luis Pino Ucan
+ */
 data class MoviesWithGenres(
     @Embedded val movie:MovieEntity,
     @Relation(

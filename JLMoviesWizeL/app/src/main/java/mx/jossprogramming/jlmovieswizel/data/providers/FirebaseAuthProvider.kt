@@ -10,7 +10,11 @@ import mx.jossprogramming.jlmovieswizel.data.models.AuthUserResult
 import mx.jossprogramming.jlmovieswizel.data.models.ServiceState
 import javax.inject.Inject
 
-//TODO FUNCIONES PARA REGISTRO DE USUARIOS Y LOGIN EN FIREBASE
+/**
+ *  Esta clase es el provider que hace login en firebase y resgistra a los usuarios
+ *
+ *  @author Jose Luis Pino Ucan
+ */
 class FirebaseAuthProvider @Inject constructor(){
     private var auth: FirebaseAuth = Firebase.auth
 

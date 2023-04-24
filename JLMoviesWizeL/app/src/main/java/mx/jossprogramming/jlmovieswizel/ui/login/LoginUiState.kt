@@ -1,4 +1,4 @@
-package mx.jossprogramming.mymovieapp.ui.login
+package mx.jossprogramming.jlmovieswizel.ui.login
 
 data class LoginUiState(
     var email: String = "",

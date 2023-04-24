@@ -1,4 +1,4 @@
-package mx.jossprogramming.jlmovieswizel.data.models
+package mx.jossprogramming.remote.models
 
 import com.google.gson.annotations.SerializedName
 import mx.jossprogramming.databasemovies.entitys.MovieEntity

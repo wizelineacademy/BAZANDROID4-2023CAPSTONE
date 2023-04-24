@@ -12,16 +12,15 @@ import kotlinx.coroutines.launch
 import mx.jossprogramming.databasemovies.entitys.GenreEntity
 import mx.jossprogramming.databasemovies.entitys.MovieGenresCrossRef
 import mx.jossprogramming.databasemovies.repository.MoviesRespository
-import mx.jossprogramming.jlmovieswizel.data.models.DetailMovies
-import mx.jossprogramming.jlmovieswizel.data.models.getGenres
-import mx.jossprogramming.jlmovieswizel.data.models.toEntity
 import mx.jossprogramming.jlmovieswizel.domain.GetGenresListUseCase
 import mx.jossprogramming.jlmovieswizel.domain.GetLatestMovieUseCase
 import mx.jossprogramming.jlmovieswizel.domain.GetMoviesNowPlayingUseCase
 import mx.jossprogramming.jlmovieswizel.domain.GetMoviesTopRatedUseCase
+import mx.jossprogramming.remote.models.DetailMovies
+import mx.jossprogramming.remote.models.getGenres
+import mx.jossprogramming.remote.models.toEntity
 import javax.inject.Inject
 
-//TODO INYECCIÓN DE DEPENDENCIAS EN  VIEW MODEL
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
     private val moviesUseCase: GetMoviesNowPlayingUseCase,
@@ -30,7 +29,6 @@ class MoviesViewModel @Inject constructor(
     private val genresListUseCase: GetGenresListUseCase,
     private val moviesRepository: MoviesRespository
 ):ViewModel() {
-    //TODO USO DE STATEFLOWS
     private val _listMoviesNowPlaying = MutableStateFlow(ArrayList<DetailMovies>())
     val listMoviesNowPlaying:StateFlow<ArrayList<DetailMovies>> get() = _listMoviesNowPlaying
 
@@ -42,7 +40,6 @@ class MoviesViewModel @Inject constructor(
 
     lateinit var genresObservable: Observable<String>
 
-    //TODO APLICACIÓN DE CORUTINAS
     init {
         viewModelScope.launch {
             _listMoviesNowPlaying.value = moviesUseCase().results

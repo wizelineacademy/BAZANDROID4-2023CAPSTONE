@@ -32,9 +32,14 @@ import androidx.compose.ui.unit.sp
 import mx.jossprogramming.jlmovieswizel.data.models.ServiceState
 import mx.jossprogramming.jlmovieswizel.viewmodel.LoginViewModel
 import mx.jossprogramming.jlmovieswizel.R
-import mx.jossprogramming.mymovieapp.ui.login.LoginUiState
 
-//TODO Vista correspondiente al login
+/**
+ *
+ * Pantalla principal del login.
+ * @author Jose Luis Pino Ucan
+ * @param loginViewModel recibe el viewModel principal que usará la vista
+ * @param onLoginSuccess es el lambda en caso de que el login sea exitoso
+ */
 @Composable
 fun LoginScreen(loginViewModel: LoginViewModel, onLoginSuccess:()->Unit) {
     val resultLoginService: ServiceState by loginViewModel.loginServiceState.collectAsState()

@@ -1,8 +1,8 @@
-package mx.jossprogramming.jlmovieswizel.data.network
+package mx.jossprogramming.remote.network
 
-import mx.jossprogramming.jlmovieswizel.data.models.DetailMovies
-import mx.jossprogramming.jlmovieswizel.data.models.GenresResponse
-import mx.jossprogramming.jlmovieswizel.data.models.MovieDbResponse
+import mx.jossprogramming.remote.models.GenresResponse
+import mx.jossprogramming.remote.models.DetailMovies
+import mx.jossprogramming.remote.models.MovieDbResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

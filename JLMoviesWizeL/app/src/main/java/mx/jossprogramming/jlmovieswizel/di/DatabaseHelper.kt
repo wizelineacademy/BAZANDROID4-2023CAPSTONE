@@ -12,7 +12,9 @@ import mx.jossprogramming.databasemovies.dao.MoviesDao
 
 import javax.inject.Singleton
 
-//TODO CONFIGURACIÓN DE ROOM A TRAVÉS DE HILT
+/**
+ * Modulo de inyección para la base de datos
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseHelper {

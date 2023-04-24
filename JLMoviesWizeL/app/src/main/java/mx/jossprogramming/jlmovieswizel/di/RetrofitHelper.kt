@@ -5,14 +5,16 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import mx.jossprogramming.jlmovieswizel.common.Constantes
-import mx.jossprogramming.jlmovieswizel.data.network.MovieApiClient
+import mx.jossprogramming.remote.network.MovieApiClient
 import mx.jossprogramming.jlmovieswizel.interceptors.MovieInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-//TODO CONFIGURACIÓN DE RETROFIT A TRAVÉS DE HILT
+/**
+ * @author Módulo de inyección para Retrofit
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitHelper {

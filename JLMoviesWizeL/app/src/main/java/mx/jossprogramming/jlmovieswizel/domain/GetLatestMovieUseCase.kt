@@ -1,7 +1,7 @@
 package mx.jossprogramming.jlmovieswizel.domain
 
-import mx.jossprogramming.jlmovieswizel.data.models.DetailMovies
-import mx.jossprogramming.jlmovieswizel.data.network.MovieApiClient
+import mx.jossprogramming.remote.models.DetailMovies
+import mx.jossprogramming.remote.network.MovieApiClient
 import javax.inject.Inject
 
 class GetLatestMovieUseCase @Inject constructor(private val api: MovieApiClient) {

@@ -14,11 +14,13 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.*
 import mx.jossprogramming.jlmovieswizel.common.Constantes
-import mx.jossprogramming.jlmovieswizel.data.models.DetailMovies
 import mx.jossprogramming.jlmovieswizel.databinding.ActivityMovieDetailBinding
 import mx.jossprogramming.jlmovieswizel.viewmodel.MoviesViewModel
+import mx.jossprogramming.remote.models.DetailMovies
 
-//TODO VISTA DE DETALLE DE PELÍCULA
+/**
+ * Activity con el detalle de la película
+ */
 @AndroidEntryPoint
 class MovieDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailBinding
@@ -46,7 +48,10 @@ class MovieDetailActivity : AppCompatActivity() {
         initUI(movie = movie!!)
     }
 
-    //TODO APLICACION RXJAVA
+    /**
+     * Función para aplicar RX Java
+     * @param observable recibe el observable que muestra los generos de la película
+     */
     private fun createObservable(observable:Observable<List<String>>){
         val observer = object: Observer<List<String>> {
             override fun onSubscribe(d: Disposable) {}

@@ -1,4 +1,4 @@
-package mx.jossprogramming.jlmovieswizel.data.models
+package mx.jossprogramming.remote.models
 
 data class DetailVideo(
     val id: String,

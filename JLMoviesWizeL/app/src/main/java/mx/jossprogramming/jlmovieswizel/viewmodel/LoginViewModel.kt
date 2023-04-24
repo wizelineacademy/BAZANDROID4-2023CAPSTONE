@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import mx.jossprogramming.jlmovieswizel.data.models.ServiceState
 import mx.jossprogramming.jlmovieswizel.domain.LoginUseCase
-import mx.jossprogramming.mymovieapp.ui.login.LoginUiState
+import mx.jossprogramming.jlmovieswizel.ui.login.LoginUiState
 import javax.inject.Inject
 
 @HiltViewModel
