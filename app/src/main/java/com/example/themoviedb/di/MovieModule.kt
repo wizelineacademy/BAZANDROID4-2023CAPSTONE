@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.example.themoviedb.data.datasource.local.*
 import com.example.themoviedb.data.datasource.remote.MovieRemoteDataSource
 import com.example.themoviedb.data.datasource.remote.MovieRemoteDataSourceImpl
-import com.example.themoviedb.data.repository.MovieRepositoryImpl
+import com.example.themoviedb.di.repository.MovieRepositoryImpl
 import com.example.themoviedb.data.service.MovieApiService
 import com.example.themoviedb.domain.MovieRepository
 import dagger.Module
@@ -69,6 +69,14 @@ object MovieModule {
 
     @Provides
     @Singleton
+    fun provideGenresDao(
+        movieDataBase: MovieDataBase
+    ): GenresDao {
+        return movieDataBase.genresDao()
+    }
+
+    @Provides
+    @Singleton
     fun provideMovieRepository(
         localDataSource: MovieLocalDataSource,
         remoteDataSource: MovieRemoteDataSource
@@ -84,12 +92,14 @@ object MovieModule {
     fun provideMovieLocalDataSource(
         nowPlayingDao: NowPlayingDao,
         latestDao: LatestDao,
-        topRatedDao: TopRatedDao
+        topRatedDao: TopRatedDao,
+        genresDao: GenresDao
     ): MovieLocalDataSource {
         return MovieLocalDataSourceImpl(
             nowPlayingDao,
             latestDao,
-            topRatedDao
+            topRatedDao,
+            genresDao
         )
     }
 }

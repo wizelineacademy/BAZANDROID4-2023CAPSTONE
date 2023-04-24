@@ -1,10 +1,12 @@
-package com.example.themoviedb.data.repository
+package com.example.themoviedb.di.repository
 
 import com.example.themoviedb.data.datasource.local.MovieLocalDataSource
-import com.example.themoviedb.data.datasource.local.toModel
 import com.example.themoviedb.data.datasource.remote.MovieRemoteDataSource
+import com.example.themoviedb.data.mapper.toGenresEntities
+import com.example.themoviedb.data.mapper.toModel
 import com.example.themoviedb.data.mapper.toNowPlayingEntities
 import com.example.themoviedb.data.mapper.toTopRatedEntities
+import com.example.themoviedb.domain.GenreModel
 import com.example.themoviedb.domain.MovieModel
 import com.example.themoviedb.domain.MovieRepository
 import com.example.themoviedb.util.ResultWrapper
@@ -43,6 +45,27 @@ class MovieRepositoryImpl @Inject constructor(
             emit(response)
             localDataSource.getTopRated().collect {
                 emit(ResultWrapper.Success(it.toModel()))
+            }
+        }
+    }
+
+    override suspend fun getGenres(): Flow<ResultWrapper<List<GenreModel>>> {
+        return flow {
+            val response = remoteDataSource.callGenresMovies()
+            if (response is ResultWrapper.Success) {
+                localDataSource.saveGenres(response.data.toGenresEntities())
+            }
+            emit(response)
+        }
+    }
+
+    override suspend fun getGenresMovie(ids: List<Int>): ResultWrapper<List<GenreModel>> {
+        return when(val response = localDataSource.getGenresMovie(ids)) {
+            is ResultWrapper.Error -> {
+                ResultWrapper.Error(0, response.message)
+            }
+            is ResultWrapper.Success -> {
+                ResultWrapper.Success(response.data.toModel())
             }
         }
     }

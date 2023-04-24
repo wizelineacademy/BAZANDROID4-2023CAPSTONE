@@ -1,15 +1,17 @@
 package com.example.themoviedb.data.datasource.local
 
+import com.example.themoviedb.util.ResultWrapper
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MovieLocalDataSourceImpl @Inject constructor(
     private val nowPlayingDao: NowPlayingDao,
     private val latestDao: LatestDao,
-    private val topRatedDao: TopRatedDao
+    private val topRatedDao: TopRatedDao,
+    private val genresDao: GenresDao
 ): MovieLocalDataSource {
 
-    override fun getNowPlaying(): Flow<List<NowPlayingLocal>> {
+    override fun getNowPlaying(): Flow<List<NowPlayingLocalWithGenres>> {
         return nowPlayingDao.observeAll()
     }
 
@@ -31,5 +33,22 @@ class MovieLocalDataSourceImpl @Inject constructor(
 
     override suspend fun saveTopRated(movies: List<TopRatedLocal>) {
         topRatedDao.insertAll(movies)
+    }
+
+    override suspend fun saveGenres(genres: List<GenreLocal>): ResultWrapper<Boolean> {
+        return try {
+            genresDao.insertAll(genres)
+            ResultWrapper.Success(true)
+        } catch (e: Exception) {
+            ResultWrapper.Error(0, e.message ?: "Algo salio mal")
+        }
+    }
+
+    override suspend fun getGenresMovie(ids: List<Int>): ResultWrapper<List<GenreLocal>> {
+        return try {
+            ResultWrapper.Success(genresDao.getGenres(ids))
+        } catch (e: Exception) {
+            ResultWrapper.Error(0, e.message ?: "Algo salio mal")
+        }
     }
 }

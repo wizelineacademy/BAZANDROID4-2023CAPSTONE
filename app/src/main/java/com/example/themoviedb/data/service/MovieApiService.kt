@@ -1,5 +1,6 @@
 package com.example.themoviedb.data.service
 
+import com.example.themoviedb.data.model.GenresResponse
 import com.example.themoviedb.data.model.LatestResponse
 import com.example.themoviedb.data.model.MovieResponse
 import com.example.themoviedb.network.APIServiceAutoBuilder
@@ -15,6 +16,9 @@ interface MovieApiService {
 
     @GET("movie/top_rated")
     suspend fun getTopRatedMovies(): MovieResponse
+
+    @GET("genre/movie/list")
+    suspend fun getGenresMovies(): GenresResponse
 
     class Builder: APIServiceAutoBuilder<MovieApiService>() {
 

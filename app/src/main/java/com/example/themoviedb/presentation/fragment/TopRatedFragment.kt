@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentTopRatedBinding
 import com.example.themoviedb.presentation.adapter.MovieAdapter
 import com.example.themoviedb.presentation.viewmodel.MovieViewModel
 import com.example.themoviedb.util.ResultWrapper
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,7 +43,19 @@ class TopRatedFragment : Fragment() {
         movieViewModel.callTopRatedMovies()
 
         binding.rvTopRated.apply {
-            adapter = movieAdapter
+            adapter = movieAdapter.apply {
+                setItemClickListener {
+                    findNavController().navigate(
+                        R.id.action_topRatedFragment_to_movieDetailFragment,
+                        Bundle().apply {
+                            putParcelable("movie", it)
+                        }
+                    )
+                    requireActivity()
+                        .findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+                        .visibility = View.GONE
+                }
+            }
             layoutManager = GridLayoutManager(requireContext(), 3)
         }
 
@@ -58,5 +73,12 @@ class TopRatedFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity()
+            .findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+            .visibility = View.VISIBLE
     }
 }

@@ -6,8 +6,10 @@
     <string name="text_not_have_an_account">¿No tienes una cuenta?</string>
     <string name="text_sign_up_here">Regístrate aquí</string>
     <string name="text_email">Correo electrónico</string>
+    <string name="text_genres">Generos:</string>
 
     <string name="text_menu_now_playing">Ahora</string>
     <string name="text_menu_latest">Ultima</string>
     <string name="text_menu_top_rated">Mejor Puntuación</string>
+    <string name="title_activity_compose">ComposeActivity</string>
 </resources>

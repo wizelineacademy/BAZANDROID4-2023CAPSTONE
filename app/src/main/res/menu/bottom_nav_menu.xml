@@ -3,17 +3,17 @@
 
     <item
         android:id="@id/nowPlayingFragment"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/movie_icon"
         android:title="@string/text_menu_now_playing" />
 
     <item
         android:id="@id/latestFragment"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/ic_premiere"
         android:title="@string/text_menu_latest" />
 
     <item
         android:id="@id/topRatedFragment"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/ic_rated"
         android:title="@string/text_menu_top_rated" />
 
 </menu>

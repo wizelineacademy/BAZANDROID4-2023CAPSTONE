@@ -23,7 +23,11 @@
     <fragment
         android:id="@+id/latestFragment"
         android:name="com.example.themoviedb.presentation.fragment.LatestFragment"
-        android:label="LatestFragment" />
+        android:label="LatestFragment" >
+        <action
+            android:id="@+id/action_latestFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="com.example.themoviedb.presentation.fragment.MovieDetailFragment"

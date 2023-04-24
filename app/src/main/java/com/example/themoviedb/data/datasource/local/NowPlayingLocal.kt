@@ -1,22 +1,26 @@
 package com.example.themoviedb.data.datasource.local
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.example.themoviedb.domain.MovieModel
+import androidx.room.*
 
-@Entity(tableName = "NowPlayingMovies")
+@Entity(
+    tableName = "NowPlayingMovies"
+)
 data class NowPlayingLocal(
     @PrimaryKey
     val id: Int = 0,
     val title: String,
-    val posterPath: String
+    val posterPath: String,
+    val description: String,
+    @ColumnInfo(name = "genre_ids")
+    var genreIds: List<Int>,
 )
 
-fun List<NowPlayingLocal>.toModel(): List<MovieModel> {
-    return map {
-        MovieModel(
-            title = it.title,
-            imageUrl = it.posterPath
-        )
-    }
-}
+data class NowPlayingLocalWithGenres(
+    @Embedded val nowPlayingLocal: NowPlayingLocal,
+    @Relation(
+        parentColumn = "genre_ids",
+        entityColumn = "idGenre",
+        entity = GenreLocal::class,
+    )
+    val genres: List<GenreLocal>
+)

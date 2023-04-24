@@ -1,6 +1,13 @@
 package com.example.themoviedb.domain
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class MovieModel(
     val title: String = "",
-    val imageUrl: String = ""
-)
+    val imageUrl: String = "",
+    val description: String = "",
+    val genreIds: List<Int> = emptyList(),
+    val genres: List<GenreModel> = emptyList()
+): Parcelable

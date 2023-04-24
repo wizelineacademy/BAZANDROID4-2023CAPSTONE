@@ -5,19 +5,39 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.themoviedb.databinding.FragmentMovieDetailBinding
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.fragment.app.viewModels
+import com.example.themoviedb.domain.MovieModel
+import com.example.themoviedb.presentation.compose.MovieDetail
+import com.example.themoviedb.presentation.compose.ui.theme.BAZANDROID42023CAPSTONETheme
+import com.example.themoviedb.presentation.viewmodel.MovieViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieDetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentMovieDetailBinding
+    private val movieViewModel: MovieViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        if (::binding.isInitialized.not()) {
-            binding = FragmentMovieDetailBinding.inflate(inflater, container, false)
+
+        val bundle = arguments
+        val movie = bundle?.getParcelable("movie") ?: MovieModel()
+
+        movieViewModel.getGenresMovie(movie.genreIds)
+
+        return ComposeView(requireContext()).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnLifecycleDestroyed(viewLifecycleOwner))
+            setContent {
+                BAZANDROID42023CAPSTONETheme {
+                    MovieDetail(movie = movie, movieViewModel) {
+                        requireActivity().onBackPressed()
+                    }
+                }
+            }
         }
-        return binding.root
     }
 }
