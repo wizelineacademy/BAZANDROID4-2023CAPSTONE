@@ -37,6 +37,7 @@ A continuación se listan otrás carácterísticas implementadas
 
 # CAPTURAS
 - Login
+- ![img_2.png](img_2.png)
   ![alt text](https://drive.google.com/file/d/163eYr5HCgpL1p4jd7nYEjyJJdv-cc922/view?usp=share_link)
 
 - Movies List
