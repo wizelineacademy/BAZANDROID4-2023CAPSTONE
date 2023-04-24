@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1059355317419",
+    "project_id": "dbmoviesubias",
+    "storage_bucket": "dbmoviesubias.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059355317419:android:c0467f5aff6632f0c0d3ee",
+        "android_client_info": {
+          "package_name": "mx.jramon.subias.dbmovieproyect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059355317419-bt1v5ghrm2kk1hfbj04sv119slgsalas.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mx.jramon.subias.dbmovieproyect",
+            "certificate_hash": "0e2dd636c8f5737a5822d532525c3b7585105cba"
+          }
+        },
+        {
+          "client_id": "1059355317419-bc68rvjfloc9n9fi59nvf9k3ptmk0thh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb0Gpy-baV6Ud6J5rk76pfIsVaUFHjwLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059355317419-bc68rvjfloc9n9fi59nvf9k3ptmk0thh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
