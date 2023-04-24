@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
-import mx.jramon.subias.dbmovieproyect.movies.domain.service.MovieServices
+import mx.jramon.subias.dbmovieproyect.movies.data.dataSource.remote.MovieServices
 import mx.jramon.subias.dbmovieproyect.utils.Constants.API_KY
 import mx.jramon.subias.dbmovieproyect.utils.Constants.BASE_URL
 import okhttp3.Interceptor

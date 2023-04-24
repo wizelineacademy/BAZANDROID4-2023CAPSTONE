@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.dropWhile
+import mx.jramon.subias.dbmovieproyect.network.NetworkMonitor
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,7 +18,7 @@ open class GlobalViewModel @Inject constructor(): ViewModel() {
     protected val _errorApi = MutableLiveData<String>()
     val errorApi:LiveData<String> get() = _errorApi
 
-    //val isOnline = networkMonitor.isOnline.dropWhile { it }.distinctUntilChanged()
+
 
     fun showLottie(show:Boolean){
         _showLottie.postValue(show)

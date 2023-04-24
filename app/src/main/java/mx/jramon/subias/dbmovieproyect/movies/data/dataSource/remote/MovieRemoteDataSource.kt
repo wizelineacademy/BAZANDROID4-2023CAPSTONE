@@ -1,12 +1,11 @@
-package mx.jramon.subias.dbmovieproyect.movies.data
+package mx.jramon.subias.dbmovieproyect.movies.data.dataSource.remote
 
-import mx.jramon.subias.dbmovieproyect.movies.domain.service.MovieServices
+import mx.jramon.subias.dbmovieproyect.movies.data.dataSource.remote.MovieServices
 import javax.inject.Inject
 
 class MovieRemoteDataSource @Inject constructor(
     private val api: MovieServices
 ) {
-
     fun getPopularMovie(page:Int) = api.getMoviesPopular(page)
 
     fun getPopularTvSeries(page:Int) = api.getTvSeriesPopular(page)

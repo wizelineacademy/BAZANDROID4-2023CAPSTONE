@@ -1,4 +1,4 @@
-package mx.jramon.subias.dbmovieproyect.movies.domain.service
+package mx.jramon.subias.dbmovieproyect.movies.data.dataSource.remote
 
 import io.reactivex.rxjava3.core.Single
 import mx.jramon.subias.dbmovieproyect.movies.domain.model.*

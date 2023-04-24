@@ -4,7 +4,7 @@ import android.content.Context
 import com.google.android.material.textfield.TextInputLayout
 import mx.jramon.subias.dbmovieproyect.R
 
-private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex()
+ val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex()
 
 fun isValidEmail(etEmail: TextInputLayout, context: Context):Boolean{
     val email = etEmail.editText?.text.toString()

@@ -8,5 +8,5 @@ import javax.inject.Inject
 class GetRatedMoviesUseCase @Inject constructor(
     private var repository: MovieTvRepository
 ) {
-    fun invoke(pages:Int):Single<List<MovieEntity>> = repository.getRatedMovie(pages)
+    fun invoke(pages:Int): Single<List<MovieEntity>> = repository.getRatedMovie(pages)
 }

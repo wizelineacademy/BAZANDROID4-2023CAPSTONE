@@ -3,7 +3,6 @@ package mx.jramon.subias.dbmovieproyect.movies.domain
 import io.reactivex.rxjava3.core.Single
 import mx.jramon.subias.dbmovieproyect.movies.domain.model.MovieDetails
 import mx.jramon.subias.dbmovieproyect.movies.domain.model.MovieEntity
-import mx.jramon.subias.dbmovieproyect.movies.domain.model.MovieList
 import mx.jramon.subias.dbmovieproyect.movies.domain.model.TvSerieEntity
 
 interface MovieTvRepository {

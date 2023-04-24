@@ -2,7 +2,6 @@ package mx.jramon.subias.dbmovieproyect.movies.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -11,7 +10,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import mx.jramon.subias.dbmovieproyect.GlobalViewModel
-import mx.jramon.subias.dbmovieproyect.movies.domain.MovieRepository
 import mx.jramon.subias.dbmovieproyect.movies.domain.model.MovieDetails
 import mx.jramon.subias.dbmovieproyect.movies.domain.model.MovieEntity
 import mx.jramon.subias.dbmovieproyect.movies.domain.model.TvSerieEntity
@@ -32,7 +30,7 @@ class MovieViewModel
         private val getDetailsMovieUseCase: GetDetailsMovieUseCase
     ): GlobalViewModel() {
 
-    private val movieRepository: MovieRepository by lazy { MovieRepository() }
+   // private val movieRepository: MovieRepository by lazy { MovieRepository() }
     private val diposable = CompositeDisposable()
 
     //STATE FLOWS

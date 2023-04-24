@@ -14,14 +14,21 @@
         android:name=".DbMovieApp"
         android:theme="@style/Theme.DbmovieproyectCompose"
         tools:targetApi="31">
+
         <activity
-            android:name=".movies.MovieActivity"
+            android:name=".login.LoginComposeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".movies.MovieActivity"
+            android:exported="true">
+
+
         </activity>
     </application>
 
