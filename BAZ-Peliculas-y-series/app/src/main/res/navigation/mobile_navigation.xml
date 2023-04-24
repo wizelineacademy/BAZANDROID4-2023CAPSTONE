@@ -3,19 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_streaming">
+    app:startDestination="@+id/navigation_now_playing">
 
     <fragment
-        android:id="@+id/navigation_streaming"
-        android:name="com.andresrivas.bazpeliculasyseries.presentation.view.PlayingNowFragment"
-        android:label="@string/title_streaming"
-        tools:layout="@layout/fragment_playing_now" />
+        android:id="@+id/navigation_now_playing"
+        android:name="com.andresrivas.bazpeliculasyseries.presentation.view.NowPlayingFragment"
+        android:label="@string/title_now_paying"
+        tools:layout="@layout/fragment_now_playing" />
 
     <fragment
-        android:id="@+id/navigation_trending"
-        android:name="com.andresrivas.bazpeliculasyseries.presentation.view.TrendingFragment"
-        android:label="@string/title_trending"
-        tools:layout="@layout/fragment_trending" />
+        android:id="@+id/navigation_latest_movies"
+        android:name="com.andresrivas.bazpeliculasyseries.presentation.view.LatestMoviesFragment"
+        android:label="@string/title_latest"
+        tools:layout="@layout/fragment_latest_movies" />
+
+    <fragment
+        android:id="@+id/navigation_top_rated"
+        android:name="com.andresrivas.bazpeliculasyseries.presentation.view.TopRatedMoviesFragment"
+        android:label="@string/title_top_rated"
+        tools:layout="@layout/fragment_top_rated" />
 
     <fragment
         android:id="@+id/navigation_favorites"

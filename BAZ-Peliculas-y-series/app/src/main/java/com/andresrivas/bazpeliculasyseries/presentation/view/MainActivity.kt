@@ -1,11 +1,10 @@
-package com.andresrivas.bazpeliculasyseries
+package com.andresrivas.bazpeliculasyseries.presentation.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.andresrivas.bazpeliculasyseries.R
 import com.andresrivas.bazpeliculasyseries.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,10 +20,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_streaming, R.id.navigation_trending, R.id.navigation_favorites)
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
         binding.navView.setupWithNavController(navController)
     }
 }

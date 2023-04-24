@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1064481195350",
+    "project_id": "baz-peliculas-y-series",
+    "storage_bucket": "baz-peliculas-y-series.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064481195350:android:7de5ab9144a1f4a3a902f7",
+        "android_client_info": {
+          "package_name": "com.andresrivas.bazpeliculasyseries"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064481195350-nqs1ilibi3hc8qm3onom7nb084oi7on1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andresrivas.bazpeliculasyseries",
+            "certificate_hash": "d0912afad6c273693ab9cafd7069ce8fbd8ed766"
+          }
+        },
+        {
+          "client_id": "1064481195350-vp48s4vpv9pv6ofl6ovtnu3jaqbnbg9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARzUJDjEMRMqihQ9pktR5jD5BITbWDpXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064481195350-vp48s4vpv9pv6ofl6ovtnu3jaqbnbg9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

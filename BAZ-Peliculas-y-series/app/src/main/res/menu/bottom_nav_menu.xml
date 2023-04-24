@@ -2,14 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_streaming"
+        android:id="@+id/navigation_now_playing"
         android:icon="@drawable/ic_playing_now"
-        android:title="@string/title_streaming" />
+        android:title="@string/title_now_paying" />
 
     <item
-        android:id="@+id/navigation_trending"
+        android:id="@+id/navigation_latest_movies"
+        android:icon="@drawable/ic_latest"
+        android:title="@string/title_latest" />
+
+    <item
+        android:id="@+id/navigation_top_rated"
         android:icon="@drawable/ic_trending"
-        android:title="@string/title_trending" />
+        android:title="@string/title_top_rated" />
 
     <item
         android:id="@+id/navigation_favorites"

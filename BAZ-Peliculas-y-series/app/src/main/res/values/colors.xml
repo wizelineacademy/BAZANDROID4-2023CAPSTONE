@@ -12,5 +12,7 @@
     <color name="light_blue">#6ec6ff</color>
     <color name="black_transparent">#4D000000</color>
 
+    <color name="button_color">#2867F6</color>
+
 
 </resources>

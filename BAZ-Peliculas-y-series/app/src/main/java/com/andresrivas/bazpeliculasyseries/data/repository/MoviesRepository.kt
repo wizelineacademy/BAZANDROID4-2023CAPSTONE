@@ -2,6 +2,7 @@ package com.andresrivas.bazpeliculasyseries.data.repository
 
 import com.andresrivas.bazpeliculasyseries.data.repository.datasource.MoviesDataSource
 import com.andresrivas.bazpeliculasyseries.data.repository.datasource.MoviesLocalDataSource
+import com.andresrivas.bazpeliculasyseries.domain.model.LatestMoviesModel
 import com.andresrivas.bazpeliculasyseries.domain.model.MovieModel
 import com.andresrivas.bazpeliculasyseries.domain.model.MoviesPagesModel
 import com.andresrivas.bazpeliculasyseries.domain.model.MoviesVideoModel
@@ -16,8 +17,8 @@ class MoviesRepository @Inject constructor(
     private val localDataSource: MoviesLocalDataSource
 ) {
 
-    fun getMoviesPlayingNow(): Flow<ResultAPI<MoviesPagesModel>> = flow {
-        val playingNowMovies = remoteDataSource.getMoviesPlayingNow()
+    fun getMoviesNowPlaying(): Flow<ResultAPI<MoviesPagesModel>> = flow {
+        val playingNowMovies = remoteDataSource.getMoviesNowPlaying()
         when (playingNowMovies) {
             is ResultAPI.OnSuccess -> {
                 savePlayingNowMoviesLocal(playingNowMovies.data.resultList)
@@ -27,9 +28,18 @@ class MoviesRepository @Inject constructor(
         emit(playingNowMovies)
     }
 
+    fun getLatestMovies(): Flow<ResultAPI<LatestMoviesModel>> = flow {
+        emit(remoteDataSource.getLatestMovies())
+    }
+
+    fun getMoviesTopRated(): Flow<ResultAPI<MoviesPagesModel>> = flow {
+        emit(remoteDataSource.getMoviesTopRated())
+    }
+
     fun getMoviesTrending(): Flow<ResultAPI<MoviesPagesModel>> = flow {
         emit(remoteDataSource.getMoviesTrending())
     }
+
 
     fun getMoviesVideo(movieId: String): Flow<ResultAPI<MoviesVideoModel>> = flow {
         emit(remoteDataSource.getMoviesVideo(movieId))

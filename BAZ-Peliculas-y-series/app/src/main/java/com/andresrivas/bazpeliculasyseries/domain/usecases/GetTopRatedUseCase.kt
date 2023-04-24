@@ -7,10 +7,10 @@ import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetPlayingNowUseCase @Inject constructor(
-    private val playingNowRepository: MoviesRepository
+class GetTopRatedUseCase @Inject constructor(
+    private val moviesRepository: MoviesRepository
 ) : UseCase<Nothing, MoviesPagesModel> {
     override fun execute(params: Nothing?): Flow<ResultAPI<MoviesPagesModel>> {
-        return playingNowRepository.getMoviesPlayingNow()
+        return moviesRepository.getMoviesTopRated()
     }
 }

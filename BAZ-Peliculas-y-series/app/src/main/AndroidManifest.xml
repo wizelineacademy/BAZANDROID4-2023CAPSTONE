@@ -12,18 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BAZPelículasYSeries">
         <activity
-            android:name="com.andresrivas.bazpeliculasyseries.presentation.view.MovieDetailActivity"
-            android:label="@string/title_movie_detail"
-            android:parentActivityName="com.andresrivas.bazpeliculasyseries.MainActivity"
-            android:theme="@style/Theme.BAZPelículasYSeries.NoActionBar" />
-        <activity
-            android:name="com.andresrivas.bazpeliculasyseries.MainActivity"
+            android:name=".presentation.view.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".presentation.view.MovieDetailActivity"
+            android:label="@string/title_movie_detail"
+            android:parentActivityName=".presentation.view.MovieDetailActivity"
+            android:theme="@style/Theme.BAZPelículasYSeries.NoActionBar" />
+
+        <activity
+            android:name=".presentation.view.MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

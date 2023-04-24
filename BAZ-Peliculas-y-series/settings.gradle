@@ -1,3 +1,2 @@
 rootProject.name = "BAZ Películas y series"
 include ':app'
-include ':app:login'

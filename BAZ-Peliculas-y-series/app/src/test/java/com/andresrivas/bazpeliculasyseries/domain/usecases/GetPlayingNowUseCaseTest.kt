@@ -15,21 +15,21 @@ internal class GetPlayingNowUseCaseTest {
 
     @RelaxedMockK
     private lateinit var playingNowRepository: MoviesRepository
-    private lateinit var getPlayingNowUseCase: GetPlayingNowUseCase
+    private lateinit var getPlayingNowUseCase: GetNowPlayingUseCase
 
     @Before
     fun onBefore() {
         MockKAnnotations.init(this)
-        getPlayingNowUseCase = GetPlayingNowUseCase(playingNowRepository)
+        getPlayingNowUseCase = GetNowPlayingUseCase(playingNowRepository)
     }
 
     @Test
     fun `when api doesn't return something use case will be return OnFailure`() = runBlocking {
         //Given
-        coEvery { playingNowRepository.getMoviesPlayingNow() } returns flow { ResultAPI.OnFailure(Exception()) }
+        coEvery { playingNowRepository.getMoviesNowPlaying() } returns flow { ResultAPI.OnFailure(Exception()) }
         //When
         getPlayingNowUseCase.execute()
         //Then
-        coVerify(exactly = 1) { playingNowRepository.getMoviesPlayingNow() }
+        coVerify(exactly = 1) { playingNowRepository.getMoviesNowPlaying() }
     }
 }

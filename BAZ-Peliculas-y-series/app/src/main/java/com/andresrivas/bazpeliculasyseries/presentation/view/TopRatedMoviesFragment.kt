@@ -9,36 +9,36 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.andresrivas.bazpeliculasyseries.databinding.FragmentPlayingNowBinding
+import com.andresrivas.bazpeliculasyseries.databinding.FragmentTopRatedBinding
 import com.andresrivas.bazpeliculasyseries.presentation.view.adapters.MovieAdapter
-import com.andresrivas.bazpeliculasyseries.presentation.viewmodel.PlayingNowViewModel
+import com.andresrivas.bazpeliculasyseries.presentation.viewmodel.MoviesViewModel
 import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PlayingNowFragment : Fragment() {
+class TopRatedMoviesFragment : Fragment() {
 
-    private lateinit var binding: FragmentPlayingNowBinding
+    private lateinit var binding: FragmentTopRatedBinding
     private var moviesAdapter: MovieAdapter = MovieAdapter()
-    private val playingNowViewModel: PlayingNowViewModel by viewModels()
+    private val trendingViewModel: MoviesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPlayingNowBinding.inflate(layoutInflater, container, false)
+        binding = FragmentTopRatedBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configRecyclerView()
-        playingNowViewModel.getPlayingNowMovies()
-        binding.swipeRefreshLayout.setOnRefreshListener { playingNowViewModel.getPlayingNowMovies() }
-        playingNowViewModel.movies.observe(viewLifecycleOwner) {
+        trendingViewModel.getTrendingMovies()
+        binding.swipeRefreshLayout.setOnRefreshListener { trendingViewModel.getTrendingMovies() }
+        trendingViewModel.movies.observe(viewLifecycleOwner) {
             when (it) {
                 is ResultAPI.OnSuccess -> {
                     binding.swipeRefreshLayout.isRefreshing = false
@@ -48,7 +48,9 @@ class PlayingNowFragment : Fragment() {
                     binding.swipeRefreshLayout.isRefreshing = false
                     Snackbar.make(binding.root, "Couldn't load movies", Toast.LENGTH_SHORT).show()
                 }
-                is ResultAPI.OnLoading -> {}
+                is ResultAPI.OnLoading -> {
+
+                }
             }
         }
 
@@ -63,8 +65,8 @@ class PlayingNowFragment : Fragment() {
     }
 
     private fun configRecyclerView() {
-        binding.playingNowRV.setHasFixedSize(true)
-        binding.playingNowRV.layoutManager = LinearLayoutManager(context)
-        binding.playingNowRV.adapter = moviesAdapter
+        binding.trendingRV.setHasFixedSize(true)
+        binding.trendingRV.layoutManager = LinearLayoutManager(context)
+        binding.trendingRV.adapter = moviesAdapter
     }
 }

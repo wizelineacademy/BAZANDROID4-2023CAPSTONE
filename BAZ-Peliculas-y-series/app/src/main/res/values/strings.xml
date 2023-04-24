@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">BAZ Películas y series</string>
-    <string name="title_streaming">Playing Now</string>
-    <string name="title_trending">Most Popular</string>
+    <string name="title_now_paying">Now Playing</string>
+    <string name="title_latest">Latest</string>
+    <string name="title_top_rated">Top Rated</string>
     <string name="title_movie_detail">Movie Detail</string>
     <string name="title_favorites">Favorites</string>
     <string name="youtube_api_key">AIzaSyAN0pAXDqX6NEbb4XXjgLhacGMB1AVryCQ"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="title_password_login">Password Login</string>
 </resources>

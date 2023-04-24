@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andresrivas.bazpeliculasyseries.databinding.FragmentFavoriteMoviesBinding
 import com.andresrivas.bazpeliculasyseries.presentation.view.adapters.MovieAdapter
-import com.andresrivas.bazpeliculasyseries.presentation.viewmodel.FavoritesViewModel
+import com.andresrivas.bazpeliculasyseries.presentation.viewmodel.MoviesViewModel
 import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
@@ -22,7 +22,7 @@ class FavoriteMoviesFragment : Fragment() {
 
     private lateinit var binding: FragmentFavoriteMoviesBinding
     private var moviesAdapter: MovieAdapter = MovieAdapter()
-    private val favoritesViewModel: FavoritesViewModel by viewModels()
+    private val favoritesViewModel: MoviesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

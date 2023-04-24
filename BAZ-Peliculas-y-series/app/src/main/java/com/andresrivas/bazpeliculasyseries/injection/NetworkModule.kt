@@ -6,6 +6,7 @@ import com.andresrivas.bazpeliculasyseries.data.db.data.base.MovieDb
 import com.andresrivas.bazpeliculasyseries.data.repository.datasource.MoviesDataSource
 import com.andresrivas.bazpeliculasyseries.data.repository.datasource.MoviesLocalDataSource
 import com.andresrivas.bazpeliculasyseries.data.services.APIService
+import com.andresrivas.bazpeliculasyseries.data.services.interceptors.APIKeyInterceptor
 import com.andresrivas.bazpeliculasyseries.data.services.moviesapi.MoviesRemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -25,11 +26,10 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(): Retrofit {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+    fun provideRetrofit(apiKeyInterceptor: APIKeyInterceptor): Retrofit {
         val client = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(apiKeyInterceptor)
             .connectTimeout(1, TimeUnit.MINUTES)
             .build()
 
