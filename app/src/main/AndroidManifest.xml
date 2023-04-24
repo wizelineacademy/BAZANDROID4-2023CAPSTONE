@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -18,36 +17,19 @@
         android:theme="@style/Theme.Movies"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
-            android:name=".features.movies.presentation.view.activity.LoginActivitys"
+            android:name=".features.movies.presentation.view.activity.MainActivity2"
             android:exported="true"
             android:label="@string/title_activity_login"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-
-        </activity>
-
-        <activity
-            android:name=".features.movies.presentation.view.activity.MainActivity"
-            android:theme="@style/Theme.Movies.NoActionBar"
-            android:label="@string/title_activity_login"
-            android:exported="true" >
-
+            android:theme="@style/Theme.Movies">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-
-        <activity
-            android:name=".temp.SigInActivity"
-            />
-        <activity
-            android:name=".temp.LoginActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

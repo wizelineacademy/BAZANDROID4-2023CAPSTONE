@@ -18,6 +18,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+
     @Singleton
     @Provides
     fun provideGsonBuilder(): Gson =
@@ -36,7 +37,6 @@ object AppModule {
     @Provides
     fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
         val client = OkHttpClient().newBuilder()
-
             .addInterceptor(interceptor)
             .readTimeout(2, TimeUnit.MINUTES)
             .writeTimeout(2, TimeUnit.MINUTES)

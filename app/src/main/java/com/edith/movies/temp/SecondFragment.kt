@@ -14,11 +14,11 @@ import com.edith.movies.databinding.FragmentSecondBinding
  */
 class SecondFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+        private var _binding: FragmentSecondBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+        // This property is only valid between onCreateView and
+        // onDestroyView.
+        private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +33,9 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
+       /* binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
+        }*/
     }
 
     override fun onDestroyView() {

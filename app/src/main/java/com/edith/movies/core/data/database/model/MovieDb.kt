@@ -1,4 +1,4 @@
-package com.edith.movies.core.data
+package com.edith.movies.core.data.database.model
 
 
 import android.os.Parcelable
@@ -22,4 +22,4 @@ data class MovieDb(
     @SerializedName("video") val video: Boolean,
     @SerializedName("vote_average") val vote_average: Double,
     @SerializedName("vote_count") val vote_count: Int
-):Parcelable
+): Parcelable

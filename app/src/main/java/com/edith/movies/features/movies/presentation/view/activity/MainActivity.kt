@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.edith.movies.databinding.ActivityMainBinding
-import com.edith.movies.core.data.MovieDb
+import com.edith.movies.core.data.database.model.MovieDb
 import com.edith.movies.features.movies.presentation.view.adapter.MoviesAdapter
 import com.edith.movies.features.movies.presentation.viewmodel.MoviesViewModel
 import com.edith.movies.temp.SigInActivity
@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupObservers()
         moviesViewModel.getMovies()
+        moviesViewModel.getLastMovie()
 
 
         if(Firebase.auth.currentUser == null){
@@ -37,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         moviesViewModel.movies.observe(this){
             renderList(it)
         }
+
+
     }
 
     private fun renderList(list : List<MovieDb>){
@@ -49,6 +52,7 @@ class MainActivity : AppCompatActivity() {
             adapter = moviesAdapter
         }
     }
+
 
 
 }
