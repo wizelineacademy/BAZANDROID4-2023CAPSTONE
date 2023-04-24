@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.edith.movies.core.data.database.model.MovieModel
+import com.edith.movies.core.data.database.model.Movie
 import com.edith.movies.databinding.FragmentNowPlayingMoviesBinding
 import com.edith.movies.features.movies.presentation.view.adapter.NowPlayingAdapter
 import com.edith.movies.features.movies.presentation.viewmodel.MoviesViewModel
@@ -42,7 +42,7 @@ class NowPlayingMoviesFragment : Fragment() {
     }
 
 
-    private fun renderList(list : List<MovieModel>){
+    private fun renderList(list : List<Movie>){
         val nowPlayingAdapter = NowPlayingAdapter()
         nowPlayingAdapter.submitList(list)
 

@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.edith.movies.core.data.database.model.Movie
 import com.edith.movies.core.data.database.model.MovieModel
 import com.edith.movies.databinding.ViewMovieItemBinding
 
-class NowPlayingAdapter: ListAdapter<MovieModel, NowPlayingAdapter.ViewHolder>(DiffUtilCallback()) {
+class NowPlayingAdapter: ListAdapter<Movie, NowPlayingAdapter.ViewHolder>(DiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NowPlayingAdapter.ViewHolder {
         return ViewHolder(ViewMovieItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -29,11 +30,11 @@ class NowPlayingAdapter: ListAdapter<MovieModel, NowPlayingAdapter.ViewHolder>(D
 
     inner class ViewHolder(val binding : ViewMovieItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-    class DiffUtilCallback(): DiffUtil.ItemCallback<MovieModel>(){
-        override fun areItemsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean =
+    class DiffUtilCallback(): DiffUtil.ItemCallback<Movie>(){
+        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
             oldItem==newItem
 
-        override fun areContentsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean =
+        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
             oldItem.id==newItem.id
 
     }
