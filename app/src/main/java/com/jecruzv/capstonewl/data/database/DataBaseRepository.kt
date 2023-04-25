@@ -4,9 +4,11 @@ import androidx.lifecycle.LiveData
 import com.jecruzv.capstonewl.data.RetrofitClient
 import com.jecruzv.capstonewl.data.database.dao.MoviesDao
 import com.jecruzv.capstonewl.data.database.entities.PopularMoviesDB
+import com.jecruzv.capstonewl.util.Annotations
 import com.jecruzv.capstonewl.util.Constants.API_KEY
 import javax.inject.Inject
 
+@Annotations("Entregable 2")
 class DataBaseRepository @Inject constructor(private val movieDao: MoviesDao) {
     val popularMovies: LiveData<List<PopularMoviesDB>> = movieDao.getPopularMovies()
 
