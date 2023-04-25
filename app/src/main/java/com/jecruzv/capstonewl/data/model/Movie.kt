@@ -1,20 +1,24 @@
 package com.jecruzv.capstonewl.data.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class Movie (
-    var adult: Boolean = false,
-    @SerializedName("backdrop_path")
-    var backdropPath: String = "",
-    var id: String = "",
-    var overview: String = "",
-    @SerializedName("poster_path")
-    var posterPath: String? = "",
-    @SerializedName("release_date")
-    var releaseDate: String = "",
-    var title: String = "",
-    @SerializedName("vote_average")
-    var voteAverage: Double = 0.0,
-    @SerializedName("vote_count")
-    var voteCount: Int = 0
+    val adult: Boolean?,
+    val backdrop_path: String?,
+    val poster_path: String?,
+    val genre_ids: List<Int>?,
+    val genres: List<Genre>?,
+    val media_type: String?,
+    val id: Int?,
+    val imdb_id: String?,
+    val original_language: String?,
+    val overview: String?,
+    val popularity: Double?,
+    val release_date: String?,
+    val runtime: Int?,
+    val title: String?,
+    val video: Boolean?,
+    val vote_average: Double?,
+    val vote_count: Int?
 )

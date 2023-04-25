@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.CapstoneWL" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#16b7db</item>
-        <item name="colorPrimaryVariant">#16b7db</item>
+        <item name="colorPrimary">#01b4e4</item>
+        <item name="colorPrimaryVariant">#0d253f</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondary">#01b4e4</item>
+        <item name="colorSecondaryVariant">#90cea1</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
