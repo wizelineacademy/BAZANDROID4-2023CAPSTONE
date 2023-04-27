@@ -9,16 +9,16 @@ import org.junit.Test
 
 class MoviesUnitTest {
     @Test
-    fun get_movies_now_playing_contains_data() = runTest{
+    fun get_movies_now_playing_contains_data() = runTest {
         val useCase = GetMoviesNowPlayingUseCase(FakeMovieApiClient())
         val data = useCase.invoke().results
-        Assert.assertEquals(true,data.isNotEmpty())
+        Assert.assertEquals(true, data.isNotEmpty())
     }
 
     @Test
-    fun get_movies_top_rated_contains_data() = runTest{
+    fun get_movies_top_rated_contains_data() = runTest {
         val useCase = GetMoviesTopRatedUseCase(FakeMovieApiClient())
         val data = useCase.invoke().results
-        Assert.assertEquals(true,data.isNotEmpty())
+        Assert.assertEquals(true, data.isNotEmpty())
     }
 }

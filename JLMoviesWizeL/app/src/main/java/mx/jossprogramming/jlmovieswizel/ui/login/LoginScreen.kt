@@ -29,9 +29,9 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import mx.jossprogramming.jlmovieswizel.R
 import mx.jossprogramming.jlmovieswizel.data.models.ServiceState
 import mx.jossprogramming.jlmovieswizel.viewmodel.LoginViewModel
-import mx.jossprogramming.jlmovieswizel.R
 
 /**
  *
@@ -41,14 +41,13 @@ import mx.jossprogramming.jlmovieswizel.R
  * @param onLoginSuccess es el lambda en caso de que el login sea exitoso
  */
 @Composable
-fun LoginScreen(loginViewModel: LoginViewModel, onLoginSuccess:()->Unit) {
+fun LoginScreen(loginViewModel: LoginViewModel, onLoginSuccess: () -> Unit) {
     val resultLoginService: ServiceState by loginViewModel.loginServiceState.collectAsState()
     val context = LocalContext.current
-    if(resultLoginService == ServiceState.ServiceSuccessState){
+    if (resultLoginService == ServiceState.ServiceSuccessState) {
         onLoginSuccess()
         loginViewModel.resetLoginServiceState()
-    }
-    else if(resultLoginService == ServiceState.ServiceErrorState){
+    } else if (resultLoginService == ServiceState.ServiceErrorState) {
         Toast.makeText(context, "Ocurrió un error al iniciar sesión", Toast.LENGTH_SHORT).show()
     }
     Box(
@@ -155,7 +154,7 @@ fun Password(password: String, onTextChanged: (String) -> Unit) {
         maxLines = 1,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
         keyboardActions = KeyboardActions(
-            onDone = {keyboardController?.hide()}
+            onDone = { keyboardController?.hide() }
         ),
         trailingIcon = {
             val imagen = if (passwordVisibility) {
@@ -209,5 +208,6 @@ fun Header(modifier: Modifier) {
     Icon(
         imageVector = Icons.Default.Close,
         contentDescription = "close app",
-        modifier = modifier.clickable { activity.finish() })
+        modifier = modifier.clickable { activity.finish() }
+    )
 }

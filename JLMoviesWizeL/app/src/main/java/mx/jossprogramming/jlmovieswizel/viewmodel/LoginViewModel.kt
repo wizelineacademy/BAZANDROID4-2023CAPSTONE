@@ -6,28 +6,28 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import mx.jossprogramming.jlmovieswizel.data.models.ServiceState
 import mx.jossprogramming.jlmovieswizel.domain.LoginUseCase
 import mx.jossprogramming.jlmovieswizel.ui.login.LoginUiState
-import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase
-):ViewModel() {
+) : ViewModel() {
     private val _loginUiState = MutableStateFlow(LoginUiState())
-    val loginUiState:StateFlow<LoginUiState> get() = _loginUiState
+    val loginUiState: StateFlow<LoginUiState> get() = _loginUiState
 
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading:LiveData<Boolean> = _isLoading
+    val isLoading: LiveData<Boolean> = _isLoading
 
     private val _loginServiceState = MutableStateFlow<ServiceState>(ServiceState.ServiceDefaultState)
-    val loginServiceState:StateFlow<ServiceState> = _loginServiceState
+    val loginServiceState: StateFlow<ServiceState> = _loginServiceState
 
-    fun onLoginChanged(email:String, password:String){
+    fun onLoginChanged(email: String, password: String) {
         _loginUiState.value = _loginUiState.value.copy(
             email = email,
             password = password,
@@ -38,7 +38,7 @@ class LoginViewModel @Inject constructor(
     private fun enableLogin(email: String, password: String) =
         Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length > 5
 
-    fun onLoginSelected(){
+    fun onLoginSelected() {
         viewModelScope.launch {
             _isLoading.value = true
             val result = loginUseCase(_loginUiState.value.email, _loginUiState.value.password)
@@ -47,7 +47,7 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun resetLoginServiceState(){
+    fun resetLoginServiceState() {
         _loginServiceState.value = ServiceState.ServiceDefaultState
     }
 }

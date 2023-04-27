@@ -52,20 +52,20 @@ class MovieDetailActivity : AppCompatActivity() {
      * Función para aplicar RX Java
      * @param observable recibe el observable que muestra los generos de la película
      */
-    private fun createObservable(observable:Observable<List<String>>){
-        val observer = object: Observer<List<String>> {
+    private fun createObservable(observable: Observable<List<String>>) {
+        val observer = object : Observer<List<String>> {
             override fun onSubscribe(d: Disposable) {}
 
             override fun onError(e: Throwable) {
-                Log.e("mensaje","error observer ${e.message}")
+                Log.e("mensaje", "error observer ${e.message}")
             }
 
             override fun onComplete() {}
 
             override fun onNext(t: List<String>) {
-                binding.txtGenres.text = if(t.isEmpty()){
+                binding.txtGenres.text = if (t.isEmpty()) {
                     "Not Genres Available"
-                }else{
+                } else {
                     t.joinToString(", ")
                 }
             }
@@ -77,14 +77,14 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun initUI(movie: DetailMovies) {
-        if(!movie.backdrop_path.isNullOrEmpty()){
+        if (!movie.backdrop_path.isNullOrEmpty()) {
             Glide.with(this).load("${Constantes.URL_POSTER}${movie.backdrop_path}").into(binding.imgMainMovie)
         }
-        if(!movie.poster_path.isNullOrEmpty()){
+        if (!movie.poster_path.isNullOrEmpty()) {
             Glide.with(this).load("${Constantes.URL_POSTER}${movie.poster_path}").into(binding.imgPoster)
         }
-        binding.txtTitulo.text      = movie.title
-        binding.txtSinopsis.text    = movie.overview?:"No available"
-        binding.txtRating.text      = movie.vote_average.toString()
+        binding.txtTitulo.text = movie.title
+        binding.txtSinopsis.text = movie.overview ?: "No available"
+        binding.txtRating.text = movie.vote_average.toString()
     }
 }

@@ -11,7 +11,7 @@ import okhttp3.Response
  *
  * @author Jose Luis Pino Ucan
  */
-class MovieInterceptor:Interceptor {
+class MovieInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         var request: Request = chain.request()
         val url: HttpUrl = request.url.newBuilder()

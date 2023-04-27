@@ -29,8 +29,8 @@ import mx.jossprogramming.remote.models.DetailMovies
 @Composable
 fun MoviesListScreen(viewModel: MoviesViewModel) {
     val moviesNowPlayingList: ArrayList<DetailMovies> by viewModel.listMoviesNowPlaying.collectAsState()
-    val moviesTopratedList:ArrayList<DetailMovies> by viewModel.listMoviesTopRated.collectAsState()
-    val moviesLatest:DetailMovies by viewModel.movieLastest.collectAsState()
+    val moviesTopratedList: ArrayList<DetailMovies> by viewModel.listMoviesTopRated.collectAsState()
+    val moviesLatest: DetailMovies by viewModel.movieLastest.collectAsState()
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -54,18 +54,22 @@ fun MoviesListScreen(viewModel: MoviesViewModel) {
 }
 
 @Composable
-fun Body(moviesNowPlayingList: ArrayList<DetailMovies>,
-         moviesTopRatedList: ArrayList<DetailMovies>,
-         movieLatest:DetailMovies,
-         moviesViewModel: MoviesViewModel
+fun Body(
+    moviesNowPlayingList: ArrayList<DetailMovies>,
+    moviesTopRatedList: ArrayList<DetailMovies>,
+    movieLatest: DetailMovies,
+    moviesViewModel: MoviesViewModel
 ) {
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .verticalScroll(rememberScrollState())) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
         Text(
             "Latest",
             modifier = Modifier.padding(top = 16.dp, start = 16.dp, bottom = 8.dp),
-            color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold
+        )
         GenerateCardLatestMovie(
             movie = movieLatest
         ) { moviesViewModel.insertMovieAndGenre(movieLatest) }
@@ -73,27 +77,28 @@ fun Body(moviesNowPlayingList: ArrayList<DetailMovies>,
         Text(
             "Top Rated",
             modifier = Modifier.padding(top = 16.dp, start = 16.dp, bottom = 8.dp),
-            color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold
+        )
         GenerateHorizontalList(moviesList = moviesTopRatedList, viewModel = moviesViewModel)
         Text(
             "Movies Now Playing",
             modifier = Modifier.padding(top = 16.dp, start = 16.dp, bottom = 8.dp),
-            color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+            color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold
+        )
         GenerateHorizontalList(moviesList = moviesNowPlayingList, viewModel = moviesViewModel)
         Divider(color = Color.Gray)
     }
 }
 
 @Composable
-fun GenerateCardLatestMovie(movie: DetailMovies, onClickCard: () -> Unit){
+fun GenerateCardLatestMovie(movie: DetailMovies, onClickCard: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.Black),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-    )
-    {
+    ) {
         MovieCard(movie = movie, onClickItemAction = onClickCard)
         Text(
             text = movie.title,
@@ -108,13 +113,13 @@ fun GenerateCardLatestMovie(movie: DetailMovies, onClickCard: () -> Unit){
 }
 
 @Composable
-fun GenerateHorizontalList(moviesList: ArrayList<DetailMovies>,viewModel: MoviesViewModel) {
+fun GenerateHorizontalList(moviesList: ArrayList<DetailMovies>, viewModel: MoviesViewModel) {
     LazyHorizontalGrid(
         rows = GridCells.Fixed(2),
         modifier = Modifier.height(500.dp)
     ) {
         items(moviesList) {
-            MovieCard(movie = it){
+            MovieCard(movie = it) {
                 viewModel.insertMovieAndGenre(it)
             }
         }
@@ -123,7 +128,7 @@ fun GenerateHorizontalList(moviesList: ArrayList<DetailMovies>,viewModel: Movies
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MovieCard(movie: DetailMovies,onClickItemAction:()->Unit) {
+fun MovieCard(movie: DetailMovies, onClickItemAction: () -> Unit) {
     val urlPhoto = Constantes.URL_POSTER + movie.poster_path
     val context = LocalContext.current
     Card(
@@ -132,24 +137,24 @@ fun MovieCard(movie: DetailMovies,onClickItemAction:()->Unit) {
         onClick = {
             onClickItemAction.invoke()
 
-            val intent = Intent(context,MovieDetailActivity::class.java)
+            val intent = Intent(context, MovieDetailActivity::class.java)
             /*val bundle = Bundle()
             bundle.putInt(PARAM_ID_MOVIE,movie.id)*/
-            intent.putExtra(PARAM_ID_MOVIE,movie)
+            intent.putExtra(PARAM_ID_MOVIE, movie)
             context.startActivity(intent)
         }
     ) {
         Box() {
-            if(movie.poster_path.isNullOrEmpty()){
+            if (movie.poster_path.isNullOrEmpty()) {
                 Image(
                     modifier = Modifier.align(Alignment.BottomCenter),
-                    painter = painterResource(id = R.drawable.baseline_hide_image_24), contentDescription = "not image")
-            }
-            else{
+                    painter = painterResource(id = R.drawable.baseline_hide_image_24), contentDescription = "not image"
+                )
+            } else {
                 SubcomposeAsyncImage(
                     model = urlPhoto,
                     loading = {
-                        Box(modifier = Modifier.width(100.dp)){
+                        Box(modifier = Modifier.width(100.dp)) {
                             CircularProgressIndicator(modifier = Modifier.width(100.dp))
                         }
                     },

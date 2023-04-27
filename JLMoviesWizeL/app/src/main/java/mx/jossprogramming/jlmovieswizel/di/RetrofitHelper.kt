@@ -4,13 +4,13 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 import mx.jossprogramming.jlmovieswizel.common.Constantes
-import mx.jossprogramming.remote.network.MovieApiClient
 import mx.jossprogramming.jlmovieswizel.interceptors.MovieInterceptor
+import mx.jossprogramming.remote.network.MovieApiClient
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 /**
  * @author Módulo de inyección para Retrofit
@@ -21,7 +21,7 @@ object RetrofitHelper {
 
     @Provides
     @Singleton
-    fun provideApi(builder:Retrofit.Builder): MovieApiClient {
+    fun provideApi(builder: Retrofit.Builder): MovieApiClient {
         return builder
             .build()
             .create(MovieApiClient::class.java)
@@ -29,7 +29,7 @@ object RetrofitHelper {
 
     @Provides
     @Singleton
-    fun provideRetrofit():Retrofit.Builder{
+    fun provideRetrofit(): Retrofit.Builder {
         val client = OkHttpClient().newBuilder()
             .addInterceptor(MovieInterceptor()).build()
         return Retrofit.Builder()
@@ -37,5 +37,4 @@ object RetrofitHelper {
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
     }
-
 }

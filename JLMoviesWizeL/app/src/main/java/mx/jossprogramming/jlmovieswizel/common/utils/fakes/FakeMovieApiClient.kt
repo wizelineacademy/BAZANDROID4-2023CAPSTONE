@@ -1,12 +1,12 @@
 package mx.jossprogramming.jlmovieswizel.common.utils.fakes
 
+import javax.inject.Inject
 import mx.jossprogramming.remote.models.DetailMovies
 import mx.jossprogramming.remote.models.GenresResponse
 import mx.jossprogramming.remote.models.MovieDbResponse
 import mx.jossprogramming.remote.network.MovieApiClient
-import javax.inject.Inject
 
-class FakeMovieApiClient @Inject constructor(): MovieApiClient {
+class FakeMovieApiClient @Inject constructor() : MovieApiClient {
     override suspend fun getListPlayingNow(page: Int): MovieDbResponse {
         return MoviesFakes.MovieResponseFake
     }
@@ -26,5 +26,4 @@ class FakeMovieApiClient @Inject constructor(): MovieApiClient {
     override suspend fun getGenreList(): GenresResponse {
         return GenresResponse(genres = emptyList())
     }
-
 }

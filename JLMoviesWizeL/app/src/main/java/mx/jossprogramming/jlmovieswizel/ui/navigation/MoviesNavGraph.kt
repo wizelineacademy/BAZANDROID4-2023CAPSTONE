@@ -10,15 +10,15 @@ import mx.jossprogramming.jlmovieswizel.viewmodel.LoginViewModel
 import mx.jossprogramming.jlmovieswizel.viewmodel.MoviesViewModel
 
 @Composable
-fun NavigationGraph(loginViewModel: LoginViewModel, moviesViewModel: MoviesViewModel){
+fun NavigationGraph(loginViewModel: LoginViewModel, moviesViewModel: MoviesViewModel) {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = MoviesRoutes.LoginScreen.route){
-        composable(route = MoviesRoutes.LoginScreen.route){
-            LoginScreen(loginViewModel = loginViewModel){
+    NavHost(navController = navController, startDestination = MoviesRoutes.LoginScreen.route) {
+        composable(route = MoviesRoutes.LoginScreen.route) {
+            LoginScreen(loginViewModel = loginViewModel) {
                 navController.navigate(MoviesRoutes.MoviesListScreen.route)
             }
         }
-        composable(route = MoviesRoutes.MoviesListScreen.route){
+        composable(route = MoviesRoutes.MoviesListScreen.route) {
             MoviesListScreen(viewModel = moviesViewModel)
         }
     }

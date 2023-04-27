@@ -7,10 +7,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 import mx.jossprogramming.databasemovies.AppDatabase
 import mx.jossprogramming.databasemovies.dao.MoviesDao
-
-import javax.inject.Singleton
 
 /**
  * Modulo de inyección para la base de datos
@@ -26,7 +25,7 @@ object DatabaseHelper {
 
     @Provides
     @Singleton
-    fun provideAppDatabase(@ApplicationContext appContext: Context):AppDatabase{
+    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
         return Room.databaseBuilder(
             appContext,
             AppDatabase::class.java,
