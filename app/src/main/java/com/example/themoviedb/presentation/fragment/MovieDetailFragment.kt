@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.viewModels
-import com.example.themoviedb.domain.MovieModel
 import com.example.themoviedb.presentation.compose.MovieDetail
 import com.example.themoviedb.presentation.compose.ui.theme.BAZANDROID42023CAPSTONETheme
 import com.example.themoviedb.presentation.viewmodel.MovieViewModel
@@ -25,7 +24,7 @@ class MovieDetailFragment : Fragment() {
     ): View {
 
         val bundle = arguments
-        val movie = bundle?.getParcelable("movie") ?: MovieModel()
+        val movie = bundle?.getParcelable("movie") ?: com.example.core.model.MovieModel()
 
         movieViewModel.getGenresMovie(movie.genreIds)
 

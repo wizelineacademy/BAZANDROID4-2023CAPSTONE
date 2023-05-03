@@ -1,8 +1,8 @@
 package com.example.themoviedb.domain.usecase
 
-import com.example.themoviedb.domain.GenreModel
+import com.example.core.model.GenreModel
 import com.example.themoviedb.domain.MovieRepository
-import com.example.themoviedb.util.ResultWrapper
+import com.example.tools.ResultWrapper
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

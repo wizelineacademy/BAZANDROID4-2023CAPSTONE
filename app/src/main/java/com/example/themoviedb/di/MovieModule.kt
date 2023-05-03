@@ -2,11 +2,17 @@ package com.example.themoviedb.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.themoviedb.data.datasource.local.*
-import com.example.themoviedb.data.datasource.remote.MovieRemoteDataSource
-import com.example.themoviedb.data.datasource.remote.MovieRemoteDataSourceImpl
-import com.example.themoviedb.di.repository.MovieRepositoryImpl
-import com.example.themoviedb.data.service.MovieApiService
+import com.example.local.MovieLocalDataSource
+import com.example.local.MovieLocalDataSourceImpl
+import com.example.local.dao.GenresDao
+import com.example.local.dao.LatestDao
+import com.example.local.dao.NowPlayingDao
+import com.example.local.dao.TopRatedDao
+import com.example.local.db.MovieDataBase
+import com.example.remote.MovieRemoteDataSource
+import com.example.remote.MovieRemoteDataSourceImpl
+import com.example.remote.service.MovieApiService
+import com.example.themoviedb.data.repository.MovieRepositoryImpl
 import com.example.themoviedb.domain.MovieRepository
 import dagger.Module
 import dagger.Provides
@@ -47,7 +53,7 @@ object MovieModule {
     @Singleton
     fun provideNowPlayingDao(
         movieDataBase: MovieDataBase
-    ): NowPlayingDao{
+    ): NowPlayingDao {
         return movieDataBase.nowPlayingDao()
     }
 

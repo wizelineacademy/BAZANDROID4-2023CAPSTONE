@@ -1,0 +1,25 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-parcelize'
+}
+
+apply from: "$rootProject.projectDir/baseconfig/generic.gradle"
+
+android {
+    namespace 'com.example.network'
+
+    libraryVariants.all { variant ->
+        def properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+        variant.buildConfigField 'String', 'MOVIES_API_KEY', "\"${properties.getProperty('MOVIES_API_KEY')}\""
+    }
+}
+
+dependencies {
+    implementation project(path: ':common:tools')
+}

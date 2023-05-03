@@ -13,7 +13,7 @@ import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentTopRatedBinding
 import com.example.themoviedb.presentation.adapter.MovieAdapter
 import com.example.themoviedb.presentation.viewmodel.MovieViewModel
-import com.example.themoviedb.util.ResultWrapper
+import com.example.tools.ResultWrapper
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers

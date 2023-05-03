@@ -7,7 +7,7 @@
     <data>
         <variable
             name="movie"
-            type="com.example.themoviedb.domain.MovieModel" />
+            type="com.example.core.model.MovieModel" />
 
     </data>
 

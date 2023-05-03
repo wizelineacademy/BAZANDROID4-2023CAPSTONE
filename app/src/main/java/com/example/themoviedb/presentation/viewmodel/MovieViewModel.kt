@@ -2,10 +2,9 @@ package com.example.themoviedb.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.themoviedb.domain.GenreModel
-import com.example.themoviedb.domain.MovieModel
+import com.example.core.model.MovieModel
 import com.example.themoviedb.domain.usecase.*
-import com.example.themoviedb.util.ResultWrapper
+import com.example.tools.ResultWrapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,7 +31,7 @@ class MovieViewModel @Inject constructor(
     private val _latestState = MutableStateFlow<ResultWrapper<MovieModel>?>(null)
     val latestState = _latestState.asStateFlow()
 
-    private val _genresMovieState = MutableStateFlow<List<GenreModel>?>(null)
+    private val _genresMovieState = MutableStateFlow<List<com.example.core.model.GenreModel>?>(null)
     val genresMovieState = _genresMovieState.asStateFlow()
 
     fun callNowPlayingMovies() {

@@ -11,8 +11,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.core.model.MovieModel
 import com.example.themoviedb.R
-import com.example.themoviedb.domain.MovieModel
 import com.example.themoviedb.presentation.viewmodel.MovieViewModel
 import com.skydoves.landscapist.glide.GlideImage
 

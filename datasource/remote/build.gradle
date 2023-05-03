@@ -1,0 +1,20 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-parcelize'
+}
+
+apply from: "$rootProject.projectDir/baseconfig/generic.gradle"
+
+android {
+    namespace 'com.example.remote'
+}
+
+dependencies {
+    implementation project(path: ':common:tools')
+    implementation project(path: ':common:core')
+    implementation project(path: ':common:network')
+}

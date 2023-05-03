@@ -14,3 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "BAZANDROID4-2023CAPSTONE"
 include ':app'
+include ':datasource:local'
+include ':datasource:remote'
+include ':common:tools'
+include ':common:network'
+include ':common:core'

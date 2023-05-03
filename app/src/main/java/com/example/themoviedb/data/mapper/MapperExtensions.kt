@@ -1,12 +1,11 @@
 package com.example.themoviedb.data.mapper
 
-import com.example.themoviedb.data.datasource.local.*
-import com.example.themoviedb.data.model.BASE_URL_POSTER
-import com.example.themoviedb.data.model.GenresResponse
-import com.example.themoviedb.data.model.LatestResponse
-import com.example.themoviedb.data.model.MovieResponse
-import com.example.themoviedb.domain.GenreModel
-import com.example.themoviedb.domain.MovieModel
+import com.example.core.model.GenreModel
+import com.example.core.model.MovieModel
+import com.example.local.entity.GenreLocal
+import com.example.local.entity.NowPlayingLocal
+import com.example.local.entity.NowPlayingLocalWithGenres
+import com.example.local.entity.TopRatedLocal
 
 fun List<MovieModel>.toNowPlayingEntities(): List<NowPlayingLocal> {
     return mapIndexed { index, movieModel ->
@@ -39,34 +38,6 @@ fun List<GenreModel>.toGenresEntities(): List<GenreLocal> {
             name = genreModel.name
         )
     }
-}
-
-fun MovieResponse.transformToDomain(): List<MovieModel> {
-    return results.map {
-        MovieModel(
-            title = it.title,
-            imageUrl = BASE_URL_POSTER.plus(it.posterPath),
-            description = it.overview,
-            genreIds = it.genreIds
-        )
-    }
-}
-
-fun LatestResponse.transformToDomain(): MovieModel {
-    return MovieModel(
-        title = title.orEmpty(),
-        imageUrl = BASE_URL_POSTER.plus(poster_path.orEmpty()),
-        description = overview.orEmpty()
-    )
-}
-
-fun GenresResponse.transformToDomain(): List<GenreModel> {
-    return genres?.map {
-        GenreModel(
-            id = it.id ?: 0,
-            name = it.name.orEmpty()
-        )
-    } ?: emptyList()
 }
 
 fun List<NowPlayingLocalWithGenres>.toModel(): List<MovieModel> {
