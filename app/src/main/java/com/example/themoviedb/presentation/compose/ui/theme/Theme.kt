@@ -32,7 +32,7 @@ private val LightColorPalette = lightColors(
 )
 
 val customFontFamily = FontFamily(
-    Font(R.font.alata_regular),
+    Font(R.font.nunito_regular),
     //Font(R.font.custom_font_bold, FontWeight.Bold)
 )
 
