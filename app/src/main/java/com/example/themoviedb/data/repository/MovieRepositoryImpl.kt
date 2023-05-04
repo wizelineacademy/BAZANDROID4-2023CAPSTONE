@@ -34,7 +34,7 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getTopRated(): Flow<ResultWrapper<List<com.example.core.model.MovieModel>>>  {
+    override suspend fun getTopRated(): Flow<ResultWrapper<List<com.example.core.model.MovieModel>>> {
         return flow {
             val response = remoteDataSource.callTopRatedMovies()
             if (response is ResultWrapper.Success) {

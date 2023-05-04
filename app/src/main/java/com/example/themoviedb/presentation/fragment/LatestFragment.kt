@@ -28,7 +28,8 @@ class LatestFragment : Fragment() {
     private val movieAdapter = MovieAdapter(MovieAdapter.MovieDiffCallback)
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         if (::binding.isInitialized.not()) {

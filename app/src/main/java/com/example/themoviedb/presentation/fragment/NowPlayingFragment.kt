@@ -29,7 +29,8 @@ class NowPlayingFragment : Fragment() {
     private lateinit var binding: FragmentNowPlayingBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         if (::binding.isInitialized.not()) {

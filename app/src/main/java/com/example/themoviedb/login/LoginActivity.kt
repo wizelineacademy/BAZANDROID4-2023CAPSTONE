@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginViewModel.loginState.observe(this) {
-            when(it) {
+            when (it) {
                 is ResultWrapper.Error -> {
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                 }

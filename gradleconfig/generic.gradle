@@ -48,6 +48,12 @@ android {
     }
 }
 
+detekt {
+    buildUponDefaultConfig = true
+    //allRules = false
+    config = files("$rootProject.projectDir/linterconfig/detekt.yml")
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.9.0'
@@ -108,4 +114,6 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxjava:3.0.2"
 
     implementation "com.github.skydoves:landscapist-glide:2.1.11"
+
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
 }

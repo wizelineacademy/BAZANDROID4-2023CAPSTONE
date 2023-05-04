@@ -5,9 +5,10 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
     id 'kotlin-parcelize'
+    id 'io.gitlab.arturbosch.detekt'
 }
 
-apply from: "$rootProject.projectDir/baseconfig/generic.gradle"
+apply from: "$rootProject.projectDir/gradleconfig/generic.gradle"
 
 android {
     namespace 'com.example.network'
