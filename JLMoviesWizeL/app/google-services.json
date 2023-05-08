@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "215266834138",
+    "project_id": "my-movie-app-a7d5b",
+    "storage_bucket": "my-movie-app-a7d5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215266834138:android:1c4515f5d8986033a657e3",
+        "android_client_info": {
+          "package_name": "mx.jossprogramming.jlmovieswizel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215266834138-ovc79cmapvjt2j6jtjom9svvjplhgu8t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVHjamKvmLBYZioTTOu2isoyz0HQZwwnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215266834138-ovc79cmapvjt2j6jtjom9svvjplhgu8t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215266834138:android:0cd2fe2e8078113aa657e3",
+        "android_client_info": {
+          "package_name": "mx.jossprogramming.mymovieapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215266834138-ovc79cmapvjt2j6jtjom9svvjplhgu8t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVHjamKvmLBYZioTTOu2isoyz0HQZwwnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215266834138-ovc79cmapvjt2j6jtjom9svvjplhgu8t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

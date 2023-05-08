@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.movies.MovieDetailActivity"
+    android:padding="@dimen/padding_8dp"
+    >
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.25"
+        android:orientation="horizontal"
+
+        />
+
+    <ImageView
+        android:id="@+id/img_main_movie"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_movie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideTop"
+        />
+
+    <ImageView
+        android:id="@+id/img_poster"
+        android:layout_width="100dp"
+        android:layout_height="180dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideTop"
+        android:layout_marginTop="4px"
+        android:src="@drawable/ic_movie"
+        />
+
+    <TextView
+        android:id="@+id/txt_titulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/img_poster"
+        app:layout_constraintTop_toBottomOf="@id/guideTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="@dimen/padding_8dp"
+        android:layout_marginEnd="@dimen/padding_8dp"
+        android:text="@string/titulo_de_la_pelicula"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:id="@+id/txt_Genres"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/txt_titulo"
+        app:layout_constraintEnd_toEndOf="@id/txt_titulo"
+        app:layout_constraintTop_toBottomOf="@id/txt_titulo"
+        android:layout_marginTop="@dimen/padding_8dp"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:id="@+id/txtRating"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/txt_titulo"
+        app:layout_constraintEnd_toEndOf="@id/txt_titulo"
+        app:layout_constraintTop_toBottomOf="@id/txt_Genres"
+        android:layout_marginTop="@dimen/padding_8dp"
+        android:drawableStart="@drawable/ic_start"
+        android:drawablePadding="5dp"
+        android:text="@string/rating"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        />
+
+    <ImageButton
+        android:id="@+id/btn_reproducir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/txt_titulo"
+        app:layout_constraintTop_toBottomOf="@id/txtRating"
+        android:layout_marginTop="@dimen/padding_8dp"
+        android:src="@drawable/ic_play"
+        android:visibility="gone"
+        />
+
+
+    <TextView
+        android:id="@+id/txtSinopsis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_poster"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/padding_8dp"
+        android:layout_marginBottom="8dp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
