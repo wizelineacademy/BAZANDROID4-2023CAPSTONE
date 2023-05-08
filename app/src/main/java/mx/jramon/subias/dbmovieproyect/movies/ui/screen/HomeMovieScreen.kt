@@ -1,17 +1,18 @@
 package mx.jramon.subias.dbmovieproyect.movies.ui.screen
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import mx.jramon.subias.dbmovieproyect.movies.viewmodel.MovieViewModel
 import mx.jramon.subias.dbmovieproyect.ui.components.ItemMovieComponent
 
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun HomeMovieScreen(
     vModel: MovieViewModel,
@@ -33,7 +34,6 @@ fun HomeMovieScreen(
                         .padding(10.dp)
                         .clickable {
                             vModel.getDetailMovie(listPopularMovie.value[item].id)
-                            navController.navigate("DetailsMovie")
                         }
                 )
             })

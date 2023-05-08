@@ -25,16 +25,17 @@ class LoginViewModel @Inject constructor(
 
     val validUserState by mutableStateOf(false)
 
-
     var isOnline = networkMonitor.isOnline.dropWhile { it }.distinctUntilChanged()
 
     fun authCreateUser(email:String, pass:String){
+        _lottieState.value = true
         firebase.auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener { task->
             _validUser.value = task.isSuccessful
         }
     }
 
     fun validateSignInUser(email: String, pass:String){
+        _lottieState.value = true
         firebase.auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener { task->
             _validUser.value = task.isSuccessful
         }

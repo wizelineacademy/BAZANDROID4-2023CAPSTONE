@@ -15,9 +15,8 @@ import mx.jramon.subias.dbmovieproyect.login.ui.SignUpScreen
 import mx.jramon.subias.dbmovieproyect.login.ui.routes.LoginRoutes
 import mx.jramon.subias.dbmovieproyect.login.viewmodel.LoginViewModel
 import mx.jramon.subias.dbmovieproyect.movies.MovieActivity
-import mx.jramon.subias.dbmovieproyect.movies.MoviesActivity
-import mx.jramon.subias.dbmovieproyect.movies.domain.model.MovieEntity
 import mx.jramon.subias.dbmovieproyect.network.FirebaseCommunication
+import mx.jramon.subias.dbmovieproyect.ui.components.LoadingLottie
 
 
 @AndroidEntryPoint
@@ -30,6 +29,9 @@ class LoginComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
+            LoadingLottie(show = loginViewModel.lottieState.value)
+
             navController = rememberNavController()
 
             NavHost(navController = navController, startDestination = LoginRoutes.SignIn.routes) {
@@ -40,7 +42,6 @@ class LoginComposeActivity : ComponentActivity() {
                     SignUpScreen(loginViewModel, navController)
                 }
             }
-
         }
     }
 
@@ -60,7 +61,8 @@ class LoginComposeActivity : ComponentActivity() {
     }
 
     private fun goToMovieActivity(){
-        startActivity(Intent(this, MoviesActivity::class.java).apply {
+        loginViewModel._lottieState.value = false
+        startActivity(Intent(this, MovieActivity::class.java).apply {
             this.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         })
     }

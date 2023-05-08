@@ -7,6 +7,7 @@ plugins {
 }
 
 android {
+
     namespace 'mx.jramon.subias.dbmovieproyect'
     compileSdk 33
 
@@ -21,7 +22,17 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        Properties properties = new Properties()
+        if (rootProject.file("local.properties").exists()) {
+            properties.load(rootProject.file("local.properties").newDataInputStream())
+        }
+
+        buildConfigField "String", "API_KY", properties.getProperty("API_KY")
+
     }
+
+
 
     buildTypes {
         release {
@@ -121,8 +132,20 @@ dependencies {
 
     //Lottie
     implementation "com.airbnb.android:lottie:4.2.2"
+    implementation "com.airbnb.android:lottie-compose:4.0.0"
 
     //Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+
+    //Unit Test
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+    testImplementation 'io.mockk:mockk:1.12.7'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation 'com.google.truth:truth:1.1.3'
+    testImplementation 'androidx.test:core:1.5.0'
+    testImplementation 'org.mockito:mockito-core:2.24.5'
+    androidTestImplementation 'org.mockito:mockito-android:2.24.5'
+    androidTestImplementation "androidx.navigation:navigation-testing:2.5.3"
+    debugImplementation "androidx.fragment:fragment-testing:1.5.4"
 }

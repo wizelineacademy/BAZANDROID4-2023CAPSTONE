@@ -3,6 +3,7 @@ package mx.jramon.subias.dbmovieproyect.network
 import mx.jramon.subias.dbmovieproyect.network.MovieClient
 import okhttp3.Interceptor
 import okhttp3.Response
+import java.util.Properties
 
 class RequestInterceptor: Interceptor {
 

@@ -58,12 +58,15 @@ class MovieViewModel
 
 
     fun getListPopularMovies(){
+        _lottieState.value = true
+
         viewModelScope.launch {
             val popularMovie = getPopularMovieUseCase.invoke(1)
             popularMovie
                 .observeOn(Schedulers.io())
                 .subscribe({
                   _listMovie.value = it
+                  _lottieState.value = false
                 },{
                     val errorMsg = when (it) {
                         is HttpException -> "Error de conexión"
@@ -127,13 +130,19 @@ class MovieViewModel
     }
 
     fun getDetailMovie(idMovie:Int){
+        _lottieState.value = true
         viewModelScope.launch {
             val detailMovie = getDetailsMovieUseCase.invoke(idMovie)
             detailMovie
                 .observeOn(Schedulers.io())
                 .subscribe({
                     _detailsMovie.value = it
+                    _lottieState.value = false
+
+
                 },{
+                    _lottieState.value = false
+                    _error.value = true
                     val errorMsg = when (it) {
                         is HttpException -> "Error de conexión"
 

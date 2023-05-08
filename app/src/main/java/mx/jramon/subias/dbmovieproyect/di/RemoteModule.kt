@@ -33,7 +33,6 @@ object RemoteModule {
         Interceptor { chain ->
             val originalRequest = chain.request()
             val originalHttpUrl = originalRequest.url
-
             val url = originalHttpUrl.newBuilder().addQueryParameter("api_key", API_KY).build()
             val request = originalRequest.newBuilder().url(url).build()
 
