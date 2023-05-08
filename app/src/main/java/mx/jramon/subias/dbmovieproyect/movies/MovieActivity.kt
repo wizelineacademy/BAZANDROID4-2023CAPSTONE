@@ -42,13 +42,11 @@ class MovieActivity : ComponentActivity() {
         vModel.getListPopularTvSerie()
 
         setContent {
-            LoadingLottie(show = vModel.lottieState.value)
 
             if(vModel.error.value){
                 Toast.makeText(this, "Hubo un error al cargar la pelicula", Toast.LENGTH_SHORT).show()
                 vModel._error.value = false
             }
-
 
             navController = rememberNavController()
 
@@ -60,7 +58,7 @@ class MovieActivity : ComponentActivity() {
                     DetailsMovieScreen(vModel)
                 }
             }
-
+            LoadingLottie(show = vModel.lottieState.value)
         }
     }
 }
