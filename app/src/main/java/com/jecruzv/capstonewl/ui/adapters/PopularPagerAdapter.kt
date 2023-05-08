@@ -9,12 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.viewpager.widget.PagerAdapter
 import com.jecruzv.capstonewl.R
-import com.jecruzv.capstonewl.data.model.Movie
 import com.jecruzv.capstonewl.databinding.ItemPopularViewPagerBinding
+import com.jecruzv.capstonewl.domain.model.PopularMovie
 import com.jecruzv.capstonewl.util.Annotations
+import com.jecruzv.capstonewl.util.Constants.PARAM_MOVIE_ID
+import com.jecruzv.capstonewl.util.Constants.PARAM_MOVIE_RATING
 
 @Annotations("Entregable 1")
-class PopularPagerAdapter(var popularMovieList: List<Movie>) :
+class PopularPagerAdapter(var popularPopularMovieList: List<PopularMovie>) :
     PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
@@ -25,11 +27,11 @@ class PopularPagerAdapter(var popularMovieList: List<Movie>) :
             container,
             false
         )
-        binding.popular = popularMovieList[position]
+        binding.popular = popularPopularMovieList[position]
         binding.root.setOnClickListener {
-            //val bundle = bundleOf("movie_details" to popularMovieList[position])
-            Navigation.findNavController(it)
-                .navigate(R.id.action_homeFragment_to_detailFragment)
+            val bundle = bundleOf(PARAM_MOVIE_ID to popularPopularMovieList[position].id,
+                PARAM_MOVIE_RATING to popularPopularMovieList[position].vote_average)
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_detailFragment,bundle)
         }
         container.addView(binding.root)
 
@@ -40,7 +42,7 @@ class PopularPagerAdapter(var popularMovieList: List<Movie>) :
         return view == `object`
     }
 
-    override fun getCount(): Int = popularMovieList.size
+    override fun getCount(): Int = popularPopularMovieList.size
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as ConstraintLayout)

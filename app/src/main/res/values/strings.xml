@@ -1,6 +1,39 @@
 <resources>
     <string name="app_name">CapstoneWL</string>
+    <string name="app_share">Enviar via CapstoneWL App\n</string>
+
     <string name="popular_movies">Peliculas Populares</string>
     <string name="top_rated_movies">Peliculas Mejor Calificadas</string>
     <string name="uncoming_movies">Próximas Peliculas</string>
+    <string name="title_activity_movie_screen">MovieScreen</string>
+    <string name="text_original_title">Titulo original</string>
+    <string name="text_release_date">Fecha de lanzamiento</string>
+    <string name="text_budget">Costo</string>
+    <string name="text_revenue">Recaudación</string>
+
+    <!-- Months -->
+    <string name="month_1">Ene</string>
+    <string name="month_2">Feb</string>
+    <string name="month_3">Mar</string>
+    <string name="month_4">Abr</string>
+    <string name="month_5">May</string>
+    <string name="month_6">Jun</string>
+    <string name="month_7">Jul</string>
+    <string name="month_8">Ago</string>
+    <string name="month_9">Sep</string>
+    <string name="month_10">Oct</string>
+    <string name="month_11">Nov</string>
+    <string name="month_12">Dic</string>
+    <string name="text_spoken_languages">Lenguajes hablados</string>
+    <string name="text_genres">Generos</string>
+    <string name="text_details">Detalles</string>
+    <string name="text_description">Descripción</string>
+    <string name="text_show_less">mostrar menos</string>
+    <string name="text_show_more">mostrar mas</string>
+    <string name="text_vote">Calificación</string>
+    <string name="text_count">Número de votos</string>
+    <string name="text_minutes">minutos</string>
+    <string name="text_videos">Videos</string>
+    <string name="text_similar">Peliculas Similares</string>
+    <string name="runtime">Duración</string>
 </resources>

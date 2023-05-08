@@ -48,6 +48,7 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/pagerPopularMovie"
                 android:layout_width="260dp"
+                tools:listitem="@layout/item_movie"
                 android:layout_height="320dp"
                 android:layout_marginTop="@dimen/margin32dp"
                 android:contentDescription="Movie"
@@ -58,7 +59,7 @@
                 />
 
             <TextView
-                android:id="@+id/tv_nowwatching_movies"
+                android:id="@+id/tv_upcoming_movies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/uncoming_movies"
@@ -73,17 +74,17 @@
                 app:layout_constraintTop_toBottomOf="@id/pagerPopularMovie" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNowWatching"
+                android:id="@+id/rvUpcoming"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin16dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@+id/tv_nowwatching_movies"
+                app:layout_constraintTop_toBottomOf="@+id/tv_upcoming_movies"
                 tools:listitem="@layout/item_movie" />
 
             <TextView
-                android:id="@+id/tv_upcoming_movies"
+                android:id="@+id/tv_toprated_movies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/top_rated_movies"
@@ -95,7 +96,7 @@
                 android:layout_marginTop="@dimen/margin32dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvNowWatching" />
+                app:layout_constraintTop_toBottomOf="@id/rvUpcoming" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTopRatedMovies"
@@ -104,7 +105,7 @@
                 android:layout_marginTop="@dimen/margin16dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@+id/tv_upcoming_movies"
+                app:layout_constraintTop_toBottomOf="@+id/tv_toprated_movies"
                 tools:listitem="@layout/item_movie" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

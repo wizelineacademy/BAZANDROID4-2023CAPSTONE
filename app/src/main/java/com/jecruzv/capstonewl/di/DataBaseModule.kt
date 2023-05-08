@@ -2,8 +2,10 @@ package com.jecruzv.capstonewl.di
 
 import android.content.Context
 import androidx.room.Room
-import com.jecruzv.capstonewl.data.database.MoviesDatabase
+import com.jecruzv.capstonewl.data.model.MIGRATION_1_2
+import com.jecruzv.capstonewl.data.model.MoviesDatabase
 import com.jecruzv.capstonewl.util.Annotations
+import com.jecruzv.capstonewl.util.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +21,9 @@ object DataBaseModule {
     @Singleton
     @Provides
     fun provideDataBase(@ApplicationContext ctx: Context) =
-        Room.databaseBuilder(ctx, MoviesDatabase::class.java, "TMDBDatabase").build()
+        Room.databaseBuilder(ctx, MoviesDatabase::class.java, Constants.DB_NAME)
+            //.addMigrations(MIGRATION_1_2)
+            .build()
 
     @Singleton
     @Provides

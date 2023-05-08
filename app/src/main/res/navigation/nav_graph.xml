@@ -56,8 +56,17 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.jecruzv.capstonewl.ui.fragment.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/detail_fragment">
+        android:label="fragment_detail">
+
+        <action
+            android:id="@+id/action_detailFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+
+        <argument
+            android:name="movie_id"
+            app:argType="string"
+            android:defaultValue=""
+            app:nullable="true" />
 
     </fragment>
 
