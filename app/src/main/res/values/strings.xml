@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">dbmovie</string>
+    <string name="sign_in_title">Iniciar Sesion</string>
+    <string name="title_app">DbMovieSubias</string>
+
+    <string name="email">correo electronico</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+
+    <!--SignIn-->
+    <string name="sign_in_no_account">¿No tienes una cuenta?</string>
+    <string name="sign_in_register">Regístrate</string>
+    <string name="sign_in_forgot_password">¿Has olvidado la contraseña?</string>
+    <string name="sign_in_email_error">Ingresa un correo electronico valido</string>
+    <string name="sign_in_password_error">Contraseña invalida.</string>
+    <string name="home_tittle_list_movie">Peliculas</string>
+    <string name="home_tittle_list_series">Tv Series</string>
+    <string name="sign_up_title_create_account">Crea tu cuenta</string>
+    <string name="sign_up_continue">Continuar</string>
+    <string name="sign_up_error">Las contraseñas no coinciden</string>
+    <string name="home_tittle_list_movie_top_rated">Peliculas mejor calificadas</string>
+    <string name="connection_restored">Se restauro la conexión a internet.</string>
+    <string name="connection_lost">No tienes acceso a internet.</string>
+</resources>
