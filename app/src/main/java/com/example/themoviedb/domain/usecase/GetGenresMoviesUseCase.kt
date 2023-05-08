@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class GetGenresMoviesUseCase @Inject constructor(
     private val repository: MovieRepository
-): BaseUseCase<Flow<ResultWrapper<List<GenreModel>>>> {
+) : BaseUseCase<Flow<ResultWrapper<List<GenreModel>>>> {
 
     override suspend fun execute(): Flow<ResultWrapper<List<GenreModel>>> {
         return repository.getGenres()

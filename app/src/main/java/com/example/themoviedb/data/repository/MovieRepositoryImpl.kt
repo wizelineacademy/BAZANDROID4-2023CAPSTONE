@@ -1,5 +1,7 @@
 package com.example.themoviedb.data.repository
 
+import com.example.core.model.GenreModel
+import com.example.core.model.MovieModel
 import com.example.local.MovieLocalDataSource
 import com.example.remote.MovieRemoteDataSource
 import com.example.themoviedb.data.mapper.toGenresEntities
@@ -14,8 +16,8 @@ import javax.inject.Inject
 class MovieRepositoryImpl @Inject constructor(
     private val localDataSource: MovieLocalDataSource,
     private val remoteDataSource: MovieRemoteDataSource
-): MovieRepository {
-    override suspend fun getNowPlaying(): Flow<ResultWrapper<List<com.example.core.model.MovieModel>>> {
+) : MovieRepository {
+    override suspend fun getNowPlaying(): Flow<ResultWrapper<List<MovieModel>>> {
         return flow {
             val response = remoteDataSource.callNowPlayingMovies()
             if (response is ResultWrapper.Success) {
@@ -28,13 +30,13 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getLatest(): Flow<ResultWrapper<com.example.core.model.MovieModel>> {
+    override suspend fun getLatest(): Flow<ResultWrapper<MovieModel>> {
         return flow {
             emit(remoteDataSource.callLatestMovies())
         }
     }
 
-    override suspend fun getTopRated(): Flow<ResultWrapper<List<com.example.core.model.MovieModel>>> {
+    override suspend fun getTopRated(): Flow<ResultWrapper<List<MovieModel>>> {
         return flow {
             val response = remoteDataSource.callTopRatedMovies()
             if (response is ResultWrapper.Success) {
@@ -47,7 +49,7 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getGenres(): Flow<ResultWrapper<List<com.example.core.model.GenreModel>>> {
+    override suspend fun getGenres(): Flow<ResultWrapper<List<GenreModel>>> {
         return flow {
             val response = remoteDataSource.callGenresMovies()
             if (response is ResultWrapper.Success) {
@@ -57,8 +59,8 @@ class MovieRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getGenresMovie(ids: List<Int>): ResultWrapper<List<com.example.core.model.GenreModel>> {
-        return when(val response = localDataSource.getGenresMovie(ids)) {
+    override suspend fun getGenresMovie(ids: List<Int>): ResultWrapper<List<GenreModel>> {
+        return when (val response = localDataSource.getGenresMovie(ids)) {
             is ResultWrapper.Error -> {
                 ResultWrapper.Error(0, response.message)
             }

@@ -23,7 +23,6 @@ fun MovieDetail(
     movieViewModel: MovieViewModel,
     onBackToolBar: () -> Unit
 ) {
-
     val genres = movieViewModel.genresMovieState.collectAsState()
 
     Scaffold(
@@ -49,42 +48,42 @@ fun MovieDetail(
             )
         }
     ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it)
+        ) {
+            GlideImage(
+                imageModel = {
+                    movie.imageUrl
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp),
+                previewPlaceholder = R.drawable.placeholder
+            )
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(it)
+                    .padding(horizontal = 16.dp)
             ) {
-                GlideImage(
-                    imageModel = {
-                        movie.imageUrl
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(200.dp),
-                    previewPlaceholder = R.drawable.placeholder
+                Spacer(modifier = Modifier.size(16.dp))
+                Text(
+                    text = movie.description,
                 )
-                Column(
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                ) {
-                    Spacer(modifier = Modifier.size(16.dp))
+                Spacer(modifier = Modifier.size(16.dp))
+                genres.value?.let {
                     Text(
-                        text = movie.description,
+                        text = stringResource(id = R.string.text_genres),
                     )
-                    Spacer(modifier = Modifier.size(16.dp))
-                    genres.value?.let {
-                        Text(
-                            text = stringResource(id = R.string.text_genres),
-                        )
-                        LazyColumn(content = {
-                            items(it) { genre ->
-                                Text(
-                                    text = genre.name
-                                )
-                            }
-                        })
-                    }
+                    LazyColumn(content = {
+                        items(it) { genre ->
+                            Text(
+                                text = genre.name
+                            )
+                        }
+                    })
                 }
             }
+        }
     }
 }

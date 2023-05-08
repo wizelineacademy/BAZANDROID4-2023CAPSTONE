@@ -1,10 +1,11 @@
 package com.example.themoviedb.presentation.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -24,7 +25,7 @@ import kotlinx.coroutines.withContext
 class LatestFragment : Fragment() {
 
     private lateinit var binding: FragmentLatestBinding
-    private val movieViewModel: MovieViewModel by viewModels()
+    private val movieViewModel: MovieViewModel by activityViewModels()
     private val movieAdapter = MovieAdapter(MovieAdapter.MovieDiffCallback)
 
     override fun onCreateView(
@@ -44,26 +45,26 @@ class LatestFragment : Fragment() {
 
         binding.rvLatest.apply {
             adapter = movieAdapter.apply {
-                    setItemClickListener {
-                        findNavController()
-                            .navigate(
-                                R.id.action_latestFragment_to_movieDetailFragment,
-                                Bundle().apply {
-                                    putParcelable("movie", it)
-                                }
-                            )
-                        requireActivity()
-                            .findViewById<BottomNavigationView>(R.id.bottom_nav_view)
-                            .visibility = View.GONE
-                    }
+                setItemClickListener {
+                    findNavController()
+                        .navigate(
+                            R.id.action_latestFragment_to_movieDetailFragment,
+                            Bundle().apply {
+                                putParcelable("movie", it)
+                            }
+                        )
+                    requireActivity()
+                        .findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+                        .visibility = View.GONE
                 }
+            }
             layoutManager = LinearLayoutManager(requireContext())
         }
 
         lifecycleScope.launch(Dispatchers.IO) {
             movieViewModel.latestState.collect {
                 it?.let {
-                    when(it) {
+                    when (it) {
                         is ResultWrapper.Error -> {}
                         is ResultWrapper.Success -> {
                             withContext(Dispatchers.Main) {
@@ -74,5 +75,12 @@ class LatestFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity()
+            .findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+            ?.visibility = View.VISIBLE
     }
 }

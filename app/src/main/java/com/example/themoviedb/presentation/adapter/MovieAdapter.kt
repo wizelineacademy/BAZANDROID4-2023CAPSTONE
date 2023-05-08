@@ -13,7 +13,7 @@ import com.example.themoviedb.databinding.ItemMovieBinding
 
 class MovieAdapter(
     private val itemCallback: DiffUtil.ItemCallback<MovieModel>
-): ListAdapter<MovieModel, MovieAdapter.MovieVH>(itemCallback) {
+) : ListAdapter<MovieModel, MovieAdapter.MovieVH>(itemCallback) {
 
     private var itemClickListener: ItemClickListener? = null
 
@@ -54,7 +54,7 @@ class MovieAdapter(
     }
 
     companion object {
-        val MovieDiffCallback = object: DiffUtil.ItemCallback<MovieModel>() {
+        val MovieDiffCallback = object : DiffUtil.ItemCallback<MovieModel>() {
             override fun areItemsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean {
                 return oldItem.title == newItem.title
             }

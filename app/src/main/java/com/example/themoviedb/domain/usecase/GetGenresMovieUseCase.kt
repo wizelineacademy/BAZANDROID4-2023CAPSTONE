@@ -1,7 +1,5 @@
 package com.example.themoviedb.domain.usecase
 
-
-
 import com.example.core.model.GenreModel
 import com.example.themoviedb.domain.MovieRepository
 import com.example.tools.ResultWrapper

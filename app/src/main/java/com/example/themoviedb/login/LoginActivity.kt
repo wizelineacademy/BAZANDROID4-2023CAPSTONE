@@ -1,10 +1,10 @@
 package com.example.themoviedb.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.themoviedb.MainActivity
 import com.example.themoviedb.databinding.ActivityLoginBinding
 import com.example.themoviedb.login.presentation.viewmodel.LoginViewModel
@@ -24,17 +24,18 @@ class LoginActivity : AppCompatActivity() {
         FirebaseAuthUIActivityResultContract()
     ) {
         it?.let {
-           if (it.resultCode == RESULT_OK ) {
-               startActivity(Intent(this, MainActivity::class.java))
-               finish()
-           }
+            if (it.resultCode == RESULT_OK) {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (::binding.isInitialized.not())
+        if (::binding.isInitialized.not()) {
             binding = ActivityLoginBinding.inflate(layoutInflater)
+        }
         setContentView(binding.root)
 
         FirebaseAuth.getInstance().currentUser?.let {
@@ -52,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.loginButton.setOnClickListener {
             if (binding.emailEditText.text.toString()
-                    .isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()
+                .isNotEmpty() && binding.passwordEditText.text.toString().isNotEmpty()
             ) {
                 loginViewModel.doLogin(
                     binding.emailEditText.text.toString(),

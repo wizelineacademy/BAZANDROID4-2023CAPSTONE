@@ -33,7 +33,7 @@ private val LightColorPalette = lightColors(
 
 val customFontFamily = FontFamily(
     Font(R.font.nunito_regular),
-    //Font(R.font.custom_font_bold, FontWeight.Bold)
+    // Font(R.font.custom_font_bold, FontWeight.Bold)
 )
 
 val customTypography = Typography(
@@ -53,7 +53,7 @@ fun BAZANDROID42023CAPSTONETheme(
 
     MaterialTheme(
         colors = colors,
-        //typography = Typography,
+        // typography = Typography,
         typography = customTypography,
         shapes = Shapes,
         content = content

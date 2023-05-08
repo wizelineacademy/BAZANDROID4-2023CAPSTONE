@@ -1,5 +1,6 @@
 package com.example.themoviedb.presentation.viewmodel
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.model.MovieModel
@@ -22,6 +23,7 @@ class MovieViewModel @Inject constructor(
     private val getGenresMovieUseCase: GetGenresMovieUseCase
 ) : ViewModel() {
 
+    @VisibleForTesting
     private val _nowPlayingState = MutableStateFlow<ResultWrapper<List<MovieModel>>?>(null)
     val nowPlayingState = _nowPlayingState.asStateFlow()
 
@@ -59,14 +61,14 @@ class MovieViewModel @Inject constructor(
     }
 
     fun callGenresMovies() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             getGenresMoviesUseCase.execute().collect()
         }
     }
 
     fun getGenresMovie(ids: List<Int>) {
         viewModelScope.launch(Dispatchers.IO) {
-            when(val response = getGenresMovieUseCase.execute(ids)) {
+            when (val response = getGenresMovieUseCase.execute(ids)) {
                 is ResultWrapper.Error -> {}
                 is ResultWrapper.Success -> {
                     _genresMovieState.emit(response.data)

@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class LoginRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth
-): LoginRepository {
+) : LoginRepository {
 
     override fun login(email: String, password: String): Single<ResultWrapper<FirebaseUser>> {
         return Single.create { emitter ->
@@ -17,7 +17,7 @@ class LoginRepositoryImpl @Inject constructor(
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val user = task.result.user
-                        if(user != null) {
+                        if (user != null) {
                             emitter.onSuccess(ResultWrapper.Success(user))
                         } else {
                             emitter.onSuccess(ResultWrapper.Error(0, "Algo salio mal"))

@@ -15,7 +15,7 @@ object LoginModule {
 
     @Provides
     @Singleton
-    fun provideFirebaseAuth(): FirebaseAuth{
+    fun provideFirebaseAuth(): FirebaseAuth {
         return FirebaseAuth.getInstance()
     }
 
@@ -26,5 +26,4 @@ object LoginModule {
     ): LoginRepository {
         return LoginRepositoryImpl(auth)
     }
-
 }
