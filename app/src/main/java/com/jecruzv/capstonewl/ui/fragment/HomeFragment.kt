@@ -6,7 +6,6 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,22 +14,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
-import androidx.sqlite.db.SupportSQLiteQueryBuilder
 import com.erick.juarez.tmdb.util.CustomLinearLayoutManager
 import com.jecruzv.capstonewl.R
-import com.jecruzv.capstonewl.data.model.MoviesDatabase
 import com.jecruzv.capstonewl.databinding.HomeFragmentBinding
-import com.jecruzv.capstonewl.ui.adapters.UpcomingMovieAdapter
 import com.jecruzv.capstonewl.ui.adapters.PopularPagerAdapter
 import com.jecruzv.capstonewl.ui.adapters.TopRatedMovieAdapter
+import com.jecruzv.capstonewl.ui.adapters.UpcomingMovieAdapter
 import com.jecruzv.capstonewl.ui.viewmodels.HomeViewModel
-import com.jecruzv.capstonewl.util.Constants
 import com.jecruzv.capstonewl.util.DepthPageTransformer
+import com.jecruzv.local.Constants
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -65,7 +59,8 @@ class HomeFragment : Fragment() {
         viewModel.upcoming.observe(viewLifecycleOwner) { moviesResponse ->
                 binding.rvUpcoming.layoutManager = CustomLinearLayoutManager(requireContext())
                 binding.rvUpcoming.adapter = UpcomingMovieAdapter(moviesResponse) {
-                    val bundle = bundleOf(Constants.PARAM_MOVIE_ID to it.id,
+                    val bundle = bundleOf(
+                        Constants.PARAM_MOVIE_ID to it.id,
                         Constants.PARAM_MOVIE_RATING to it.vote_average)
 
                     Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_detailFragment,bundle)

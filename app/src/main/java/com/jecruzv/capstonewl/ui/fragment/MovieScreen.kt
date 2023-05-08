@@ -1,7 +1,6 @@
 package com.jecruzv.capstonewl.ui.fragment
 
 import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -12,7 +11,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -25,13 +23,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.os.bundleOf
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.jecruzv.capstonewl.R
 import com.jecruzv.capstonewl.ui.fragment.ui.theme.spacing
 import com.jecruzv.capstonewl.ui.viewmodels.MovieViewModel
 import com.jecruzv.capstonewl.util.*
-import dagger.hilt.android.AndroidEntryPoint
+import com.jecruzv.local.Constants
 import java.lang.Float.min
 
 /**

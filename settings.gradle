@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "CapstoneWL"
 include ':app'
+include ':app:local'
+include ':app:remote'

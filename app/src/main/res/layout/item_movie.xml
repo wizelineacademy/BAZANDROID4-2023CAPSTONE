@@ -6,7 +6,7 @@
     <data>
         <variable
             name="movie"
-            type="com.jecruzv.capstonewl.data.remote.dto.MovieDto" />
+            type="com.jecruzv.remote.data.dto.MovieDto" />
     </data>
 
 

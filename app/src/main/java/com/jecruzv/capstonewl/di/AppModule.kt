@@ -2,9 +2,6 @@ package com.jecruzv.capstonewl.di
 
 import android.content.Context
 import android.net.ConnectivityManager
-import androidx.lifecycle.SavedStateHandle
-import com.jecruzv.capstonewl.domain.usecases.GetMovieUseCase
-import com.jecruzv.capstonewl.ui.viewmodels.MovieViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

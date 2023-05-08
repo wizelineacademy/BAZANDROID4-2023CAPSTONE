@@ -5,7 +5,7 @@
     <data>
         <variable
             name="popular"
-            type="com.jecruzv.capstonewl.domain.model.UpcomingMovie" />
+            type="com.jecruzv.local.model.UpcomingMovie" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

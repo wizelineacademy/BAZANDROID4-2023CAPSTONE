@@ -10,10 +10,9 @@ import androidx.navigation.Navigation
 import androidx.viewpager.widget.PagerAdapter
 import com.jecruzv.capstonewl.R
 import com.jecruzv.capstonewl.databinding.ItemPopularViewPagerBinding
-import com.jecruzv.capstonewl.domain.model.PopularMovie
 import com.jecruzv.capstonewl.util.Annotations
-import com.jecruzv.capstonewl.util.Constants.PARAM_MOVIE_ID
-import com.jecruzv.capstonewl.util.Constants.PARAM_MOVIE_RATING
+import com.jecruzv.local.Constants
+import com.jecruzv.local.model.PopularMovie
 
 @Annotations("Entregable 1")
 class PopularPagerAdapter(var popularPopularMovieList: List<PopularMovie>) :
@@ -29,8 +28,9 @@ class PopularPagerAdapter(var popularPopularMovieList: List<PopularMovie>) :
         )
         binding.popular = popularPopularMovieList[position]
         binding.root.setOnClickListener {
-            val bundle = bundleOf(PARAM_MOVIE_ID to popularPopularMovieList[position].id,
-                PARAM_MOVIE_RATING to popularPopularMovieList[position].vote_average)
+            val bundle = bundleOf(
+                Constants.PARAM_MOVIE_ID to popularPopularMovieList[position].id,
+                Constants.PARAM_MOVIE_RATING to popularPopularMovieList[position].vote_average)
             Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_detailFragment,bundle)
         }
         container.addView(binding.root)

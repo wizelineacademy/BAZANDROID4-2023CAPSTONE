@@ -1,7 +1,7 @@
 package com.jecruzv.capstonewl
 
 import android.app.Application
-import com.jecruzv.capstonewl.util.Constants
+import com.jecruzv.local.Constants
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp

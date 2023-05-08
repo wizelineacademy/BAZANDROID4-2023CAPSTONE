@@ -2,16 +2,14 @@ package com.jecruzv.capstonewl.ui.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.*
-import androidx.sqlite.db.SupportSQLiteQueryBuilder
-import com.jecruzv.capstonewl.data.model.MoviesDao
-import com.jecruzv.capstonewl.domain.model.PopularMovie
-import com.jecruzv.capstonewl.domain.model.TopRatedMovie
-import com.jecruzv.capstonewl.domain.model.UpcomingMovie
-import com.jecruzv.capstonewl.domain.usecases.*
+import com.jecruzv.capstonewl.usecases.*
 import com.jecruzv.capstonewl.util.Annotations
-import com.jecruzv.capstonewl.util.Constants
 import com.jecruzv.capstonewl.util.DataState
 import com.jecruzv.capstonewl.util.ExploreType
+import com.jecruzv.local.dao.MoviesDao
+import com.jecruzv.local.model.PopularMovie
+import com.jecruzv.local.model.TopRatedMovie
+import com.jecruzv.local.model.UpcomingMovie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable

@@ -16,9 +16,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.request.CachePolicy
-import com.jecruzv.capstonewl.util.Constants.IMAGE_URL_ORIGINAL
 import com.jecruzv.capstonewl.R
 import com.jecruzv.capstonewl.ui.fragment.ui.theme.spacing
+import com.jecruzv.local.Constants
 
 
 @Composable
@@ -35,7 +35,7 @@ fun BackgroundImage(
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
                 painter = rememberImagePainter(
-                    data = IMAGE_URL_ORIGINAL + imageUrl,
+                    data = Constants.IMAGE_URL_ORIGINAL + imageUrl,
                     builder = {
                         crossfade(true)
                         error(R.drawable.ic_placeholder)

@@ -1,6 +1,6 @@
 package com.jecruzv.capstonewl.ui.viewmodels
 
-import com.jecruzv.capstonewl.domain.model.MovieDetail
+import com.jecruzv.local.model.MovieDetail
 
 
 /**

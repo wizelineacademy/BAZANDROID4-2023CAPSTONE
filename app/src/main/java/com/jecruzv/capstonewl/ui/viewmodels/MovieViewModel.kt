@@ -1,20 +1,18 @@
 package com.jecruzv.capstonewl.ui.viewmodels
 
-import android.provider.ContactsContract.Data
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jecruzv.capstonewl.data.model.MoviesDao
-import com.jecruzv.capstonewl.domain.model.MovieDetail
-import com.jecruzv.capstonewl.domain.usecases.GetMovieUseCase
-import com.jecruzv.capstonewl.domain.usecases.GetSimilarUseCase
-import com.jecruzv.capstonewl.domain.usecases.GetVideosUseCase
+import com.jecruzv.capstonewl.usecases.GetMovieUseCase
+import com.jecruzv.capstonewl.usecases.GetSimilarUseCase
+import com.jecruzv.capstonewl.usecases.GetVideosUseCase
 import com.jecruzv.capstonewl.ui.fragment.SimilarMoviesState
-import com.jecruzv.capstonewl.util.Constants.PARAM_MOVIE_ID
-import com.jecruzv.capstonewl.util.Constants.PARAM_MOVIE_RATING
 import com.jecruzv.capstonewl.util.DataState
+import com.jecruzv.local.Constants
+import com.jecruzv.local.dao.MoviesDao
+import com.jecruzv.local.model.MovieDetail
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -47,10 +45,10 @@ class MovieViewModel @Inject constructor(
     var movie: MovieDetail? = null
 
     init {
-        savedStateHandle.get<Int>(PARAM_MOVIE_ID)?.let {
+        savedStateHandle.get<Int>(Constants.PARAM_MOVIE_ID)?.let {
             movieId = it
         }
-        savedStateHandle.get<Double>(PARAM_MOVIE_RATING)?.let {
+        savedStateHandle.get<Double>(Constants.PARAM_MOVIE_RATING)?.let {
             getMovie(movieId)
             getVideos(movieId)
             getSimilarMovies(movieId,it)
@@ -96,7 +94,7 @@ class MovieViewModel @Inject constructor(
                     _similarState.value = SimilarMoviesState(isLoading = true)
                 }
                 is DataState.Success -> {
-                    result.data?.forEach { it.vote_average = rate }
+                    //result.data?.forEach { it.vote_average = rate }
                     _similarState.value = SimilarMoviesState(movies = result.data ?: emptyList())
                 }
                 is DataState.Error -> {

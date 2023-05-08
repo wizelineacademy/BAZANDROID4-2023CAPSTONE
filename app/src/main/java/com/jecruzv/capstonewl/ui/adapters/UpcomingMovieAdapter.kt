@@ -5,11 +5,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.jecruzv.capstonewl.R
-import com.jecruzv.capstonewl.databinding.ItemPopularViewPagerBinding
 import com.jecruzv.capstonewl.databinding.ItemUpcomingMovieBinding
-import com.jecruzv.capstonewl.domain.model.PopularMovie
-import com.jecruzv.capstonewl.domain.model.UpcomingMovie
 import com.jecruzv.capstonewl.util.Annotations
+import com.jecruzv.local.model.UpcomingMovie
 
 @Annotations("Entregable 1")
 class UpcomingMovieAdapter(var popularMovieDetailList: List<UpcomingMovie>, val onItemClick: (UpcomingMovie) -> Unit) :

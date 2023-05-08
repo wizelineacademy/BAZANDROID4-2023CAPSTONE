@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import coil.request.CachePolicy
 import com.jecruzv.capstonewl.R
-import com.jecruzv.capstonewl.util.Constants.BASE_POSTER_IMAGE_URL
+import com.jecruzv.local.Constants
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -42,7 +42,7 @@ fun ImageCard(
         Box(modifier = Modifier.fillMaxSize()) {
             Image(
                 painter = rememberImagePainter(
-                    data = BASE_POSTER_IMAGE_URL + imageUrl,
+                    data = Constants.BASE_POSTER_IMAGE_URL + imageUrl,
                     builder = {
                         crossfade(true)
                         error(R.drawable.ic_placeholder)

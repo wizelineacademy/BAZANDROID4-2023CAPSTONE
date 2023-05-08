@@ -5,11 +5,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.jecruzv.capstonewl.R
-import com.jecruzv.capstonewl.databinding.ItemPopularViewPagerBinding
 import com.jecruzv.capstonewl.databinding.ItemTopratedMovieBinding
-import com.jecruzv.capstonewl.domain.model.PopularMovie
-import com.jecruzv.capstonewl.domain.model.TopRatedMovie
 import com.jecruzv.capstonewl.util.Annotations
+import com.jecruzv.local.model.TopRatedMovie
 
 @Annotations("Entregable 1")
 class TopRatedMovieAdapter(var popularMovieDetailList: List<TopRatedMovie>, val onItemClick: (TopRatedMovie) -> Unit) :

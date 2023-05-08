@@ -1,6 +1,7 @@
 package com.jecruzv.capstonewl.ui.viewmodels
 
-import com.jecruzv.capstonewl.domain.model.Video
+import com.jecruzv.local.model.Video
+
 
 /**
  * The state data class for Movie Screen.
