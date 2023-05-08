@@ -2,6 +2,7 @@ package mx.jramon.subias.dbmovieproyect.movies
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +22,7 @@ import mx.jramon.subias.dbmovieproyect.movies.viewmodel.MovieViewModel
 import mx.jramon.subias.dbmovieproyect.ui.components.LoadingLottie
 
 @AndroidEntryPoint
-class MovieActivity :AppCompatActivity() {
+class MovieActivity : ComponentActivity() {
 
     private val vModel: MovieViewModel by viewModels()
     private lateinit var navController: NavHostController
