@@ -2,11 +2,11 @@ package com.andresrivas.bazpeliculasyseries.presentation.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.andresrivas.bazpeliculasyseries.data.mapper.transformToDetail
@@ -23,11 +23,12 @@ class LatestMoviesFragment : Fragment() {
 
     private lateinit var binding: FragmentLatestMoviesBinding
     private var moviesAdapter: LatestMoviesAdapter = LatestMoviesAdapter()
-    private val playingNowViewModel: MoviesViewModel by viewModels()
+    private val moviesViewModel: MoviesViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentLatestMoviesBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -36,9 +37,9 @@ class LatestMoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configRecyclerView()
-        playingNowViewModel.getLatestMovies()
-        binding.swipeRefreshLayout.setOnRefreshListener { playingNowViewModel.getLatestMovies() }
-        playingNowViewModel.latestMovies.observe(viewLifecycleOwner) {
+        moviesViewModel.getLatestMovies()
+        binding.swipeRefreshLayout.setOnRefreshListener { moviesViewModel.getLatestMovies() }
+        moviesViewModel.latestMovies.observe(viewLifecycleOwner) {
             when (it) {
                 is ResultAPI.OnSuccess -> {
                     binding.swipeRefreshLayout.isRefreshing = false
@@ -46,19 +47,25 @@ class LatestMoviesFragment : Fragment() {
                 }
                 is ResultAPI.OnFailure -> {
                     binding.swipeRefreshLayout.isRefreshing = false
-                    Snackbar.make(binding.root, "Couldn't load movies" + it.exception.toString(), Toast.LENGTH_SHORT).show()
+                    Snackbar.make(
+                        binding.root,
+                        "Couldn't load movies " + it.exception.toString(),
+                        Toast.LENGTH_SHORT,
+                    ).show()
                 }
                 is ResultAPI.OnLoading -> {}
             }
         }
 
         moviesAdapter.setOnMovieItemClickListener { latestMoviesResultModel ->
-            startActivity(Intent(requireContext(), MovieDetailActivity::class.java).apply {
-                putExtra(
-                    MovieDetailActivity.MOVIE_RESULT_MOVIE_INFO,
-                    Gson().toJson(latestMoviesResultModel.transformToDetail())
-                )
-            })
+            startActivity(
+                Intent(requireContext(), MovieDetailActivity::class.java).apply {
+                    putExtra(
+                        MovieDetailActivity.MOVIE_RESULT_MOVIE_INFO,
+                        Gson().toJson(latestMoviesResultModel.transformToDetail()),
+                    )
+                },
+            )
         }
     }
 

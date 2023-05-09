@@ -1,13 +1,22 @@
 package com.andresrivas.bazpeliculasyseries.data.mapper
 
-import com.andresrivas.bazpeliculasyseries.data.services.moviesapi.response.*
-import com.andresrivas.bazpeliculasyseries.domain.model.*
+import com.andresrivas.bazpeliculasyseries.data.services.moviesapi.response.Dates
+import com.andresrivas.bazpeliculasyseries.data.services.moviesapi.response.MovieResponse
+import com.andresrivas.bazpeliculasyseries.data.services.moviesapi.response.MovieResult
+import com.andresrivas.bazpeliculasyseries.data.services.moviesapi.response.MovieVideoResponse
+import com.andresrivas.bazpeliculasyseries.data.services.moviesapi.response.MovieVideoResult
+import com.andresrivas.bazpeliculasyseries.domain.model.DatesResultModel
+import com.andresrivas.bazpeliculasyseries.domain.model.MovieModel
+import com.andresrivas.bazpeliculasyseries.domain.model.MoviesPagesModel
+import com.andresrivas.bazpeliculasyseries.domain.model.MoviesVideoModel
+import com.andresrivas.bazpeliculasyseries.domain.model.MoviesVideoResultModel
 
 fun MovieResponse.transformToDomain(): MoviesPagesModel {
     return MoviesPagesModel(
         dates?.transformToDomain() ?: DatesResultModel(),
         page ?: 0,
-        resultList.map { it?.transformToDomain() ?: MovieModel(id = 0) })
+        resultList.map { it?.transformToDomain() ?: MovieModel(id = 0) },
+    )
 }
 
 fun MovieResult.transformToDomain(): MovieModel {
@@ -15,7 +24,7 @@ fun MovieResult.transformToDomain(): MovieModel {
         0,
         adult ?: false,
         backdropPath.orEmpty(),
-        //genreIds ?: arrayListOf(),
+        // genreIds ?: arrayListOf(),
         id.orEmpty(),
         originalLanguage.orEmpty(),
         originalTitle.orEmpty(),
@@ -33,7 +42,8 @@ fun MovieResult.transformToDomain(): MovieModel {
 fun MovieVideoResponse.transformToDomain(): MoviesVideoModel {
     return MoviesVideoModel(
         id ?: 0,
-        resultList.map { it?.transformToDomain() ?: MoviesVideoResultModel() })
+        resultList.map { it?.transformToDomain() ?: MoviesVideoResultModel() },
+    )
 }
 
 fun MovieVideoResult.transformToDomain(): MoviesVideoResultModel {
@@ -43,7 +53,7 @@ fun MovieVideoResult.transformToDomain(): MoviesVideoResultModel {
         name.orEmpty(),
         site.orEmpty(),
         size ?: 0,
-        type.orEmpty()
+        type.orEmpty(),
     )
 }
 

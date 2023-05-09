@@ -7,8 +7,8 @@ import com.andresrivas.bazpeliculasyseries.domain.model.MovieModel
 
 @Database(
     entities = [MovieModel::class],
-    version = 1
+    version = 1,
 )
-abstract class MovieDb : RoomDatabase() {
+abstract class TopRatedMoviesDb : RoomDatabase() {
     abstract fun movieDao(): MovieDao
 }

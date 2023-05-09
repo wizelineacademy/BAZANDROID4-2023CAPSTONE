@@ -17,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     private val getMovieVideoUseCase: GetMovieVideoUseCase,
-    private val favoritesUseCase: FavoritesUseCase
+    private val favoritesUseCase: FavoritesUseCase,
 ) : ViewModel() {
 
     private val _videoMovie = SingleLiveEvent<ResultAPI<MoviesVideoModel>>()

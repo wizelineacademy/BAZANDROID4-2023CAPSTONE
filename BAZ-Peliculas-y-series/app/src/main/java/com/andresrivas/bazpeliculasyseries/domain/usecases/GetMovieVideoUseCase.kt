@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetMovieVideoUseCase @Inject constructor(
-    private val moviesRepository: MoviesRepository
+    private val moviesRepository: MoviesRepository,
 ) : UseCase<GetMovieVideoUseCase.Params, MoviesVideoModel> {
     override fun execute(params: Params?): Flow<ResultAPI<MoviesVideoModel>> {
         return params?.let {
@@ -17,6 +17,6 @@ class GetMovieVideoUseCase @Inject constructor(
     }
 
     data class Params(
-        val movieId: String
+        val movieId: String,
     )
 }

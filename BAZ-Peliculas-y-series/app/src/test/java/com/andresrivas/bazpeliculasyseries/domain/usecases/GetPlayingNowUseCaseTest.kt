@@ -25,11 +25,13 @@ internal class GetPlayingNowUseCaseTest {
 
     @Test
     fun `when api doesn't return something use case will be return OnFailure`() = runBlocking {
-        //Given
-        coEvery { playingNowRepository.getMoviesNowPlaying() } returns flow { ResultAPI.OnFailure(Exception()) }
-        //When
+        // Given
+        coEvery { playingNowRepository.getMoviesNowPlaying() } returns flow {
+            ResultAPI.OnFailure(Exception())
+        }
+        // When
         getPlayingNowUseCase.execute()
-        //Then
+        // Then
         coVerify(exactly = 1) { playingNowRepository.getMoviesNowPlaying() }
     }
 }

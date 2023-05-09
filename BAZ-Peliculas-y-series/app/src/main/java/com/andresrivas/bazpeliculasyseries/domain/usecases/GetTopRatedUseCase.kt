@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetTopRatedUseCase @Inject constructor(
-    private val moviesRepository: MoviesRepository
+    private val moviesRepository: MoviesRepository,
 ) : UseCase<Nothing, MoviesPagesModel> {
     override fun execute(params: Nothing?): Flow<ResultAPI<MoviesPagesModel>> {
         return moviesRepository.getMoviesTopRated()

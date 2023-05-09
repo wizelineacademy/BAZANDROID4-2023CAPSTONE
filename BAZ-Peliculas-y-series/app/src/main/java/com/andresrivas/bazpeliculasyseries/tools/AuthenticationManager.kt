@@ -25,7 +25,7 @@ class AuthenticationManager(builder: Builder) {
 
     private val googleSignInResult = registry.register(
         GOOGLE_SIGN_IN,
-        ActivityResultContracts.StartActivityForResult()
+        ActivityResultContracts.StartActivityForResult(),
     ) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
@@ -50,13 +50,12 @@ class AuthenticationManager(builder: Builder) {
 
     class Builder(
         var registry: ActivityResultRegistry,
-        var context: Context
+        var context: Context,
     ) {
 
         var successProcess: ((tokenModel: AccountModel) -> Unit)? = null
         var failProcess: ((errorMessage: String) -> Unit)? = null
         var signInProviderType: SignInProviderType = SignInProviderType.GoogleSignIn
-
 
         fun addSuccessCallback(success: ((tokenModel: AccountModel) -> Unit)): Builder {
             this.successProcess = success
@@ -81,7 +80,6 @@ class AuthenticationManager(builder: Builder) {
             internal const val GOOGLE_SIGN_IN = "GOOGLE_SIGN_IN"
             internal const val EMAIL_SIGN_IN = "EMAIL_SIGN_IN"
         }
-
     }
 
     fun launch() {

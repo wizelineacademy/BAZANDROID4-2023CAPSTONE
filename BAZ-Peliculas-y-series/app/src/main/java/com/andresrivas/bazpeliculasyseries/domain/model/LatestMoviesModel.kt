@@ -25,24 +25,24 @@ data class LatestMoviesModel(
     var title: String = "",
     var video: Boolean = false,
     var voteAverage: Int = 0,
-    var voteCount: Int = 0
+    var voteCount: Int = 0,
 
 ) {
     data class Genres(
         var id: Int = 0,
-        var name: String = ""
+        var name: String = "",
     )
 
     data class ProductionCompanies(
-        val id: Int =0 ,
+        val id: Int = 0,
         val logoPath: String = "",
         val name: String = "",
-        val originCountry: String = ""
+        val originCountry: String = "",
     )
 
     data class SpokenLanguages(
         val englishName: String = "",
         val iso: String = "",
-        val name: String ="",
+        val name: String = "",
     )
 }

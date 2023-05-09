@@ -27,20 +27,18 @@ data class LatestMoviesResponse(
     @SerializedName("title") var title: String? = null,
     @SerializedName("video") var video: Boolean? = null,
     @SerializedName("vote_average") var voteAverage: Int? = null,
-    @SerializedName("vote_count") var voteCount: Int? = null
-
+    @SerializedName("vote_count") var voteCount: Int? = null,
 ) {
     data class Genres(
         @SerializedName("id") var id: Int? = null,
-        @SerializedName("name") var name: String? = null
-
+        @SerializedName("name") var name: String? = null,
     )
 
     data class ProductionCompanies(
         @SerializedName("id") val id: Int?,
         @SerializedName("logo_path") val logoPath: String?,
         @SerializedName("name") val name: String?,
-        @SerializedName("origin_country") val originCountry: String?
+        @SerializedName("origin_country") val originCountry: String?,
     )
 
     data class SpokenLanguages(

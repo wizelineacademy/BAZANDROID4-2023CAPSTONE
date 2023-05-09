@@ -1,28 +1,47 @@
 package com.andresrivas.bazpeliculasyseries.data.db
 
 import com.andresrivas.bazpeliculasyseries.data.db.data.base.FavoriteMoviesDb
-import com.andresrivas.bazpeliculasyseries.data.db.data.base.MovieDb
+import com.andresrivas.bazpeliculasyseries.data.db.data.base.NowPlayingMoviesDb
+import com.andresrivas.bazpeliculasyseries.data.db.data.base.TopRatedMoviesDb
 import com.andresrivas.bazpeliculasyseries.data.repository.datasource.MoviesLocalDataSource
 import com.andresrivas.bazpeliculasyseries.domain.model.MovieModel
 import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
 import javax.inject.Inject
 
 class MoviesLocalDataSourceImpl @Inject constructor(
-    private val moviesDataBase: MovieDb,
-    private val favoriteMoviesDb: FavoriteMoviesDb
+    private val nowPlayingMoviesDataBase: NowPlayingMoviesDb,
+    private val topRatedMoviesDataBase: TopRatedMoviesDb,
+    private val favoriteMoviesDb: FavoriteMoviesDb,
 ) : MoviesLocalDataSource {
     override suspend fun saveMoviesPlayingNow(list: List<MovieModel>): ResultAPI<List<MovieModel>> {
         return try {
-            moviesDataBase.movieDao().insert(list)
+            nowPlayingMoviesDataBase.movieDao().insert(list)
             ResultAPI.OnSuccess(list)
         } catch (e: Exception) {
             ResultAPI.OnFailure(e)
         }
     }
 
-    override suspend fun getMoviesPlayingNow(): ResultAPI<List<MovieModel>> {
+    override suspend fun saveTopRatedMovies(list: List<MovieModel>): ResultAPI<List<MovieModel>> {
         return try {
-            ResultAPI.OnSuccess(moviesDataBase.movieDao().getAll())
+            topRatedMoviesDataBase.movieDao().insert(list)
+            ResultAPI.OnSuccess(list)
+        } catch (e: Exception) {
+            ResultAPI.OnFailure(e)
+        }
+    }
+
+    override suspend fun getNowPlayingMovies(): ResultAPI<List<MovieModel>> {
+        return try {
+            ResultAPI.OnSuccess(nowPlayingMoviesDataBase.movieDao().getAll())
+        } catch (e: Exception) {
+            ResultAPI.OnFailure(e)
+        }
+    }
+
+    override suspend fun getTopRatedMovies(): ResultAPI<List<MovieModel>> {
+        return try {
+            ResultAPI.OnSuccess(topRatedMoviesDataBase.movieDao().getAll())
         } catch (e: Exception) {
             ResultAPI.OnFailure(e)
         }
@@ -37,7 +56,9 @@ class MoviesLocalDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun saveFavoriteIfNoExistMovies(list: List<MovieModel>): ResultAPI<List<MovieModel>> {
+    override suspend fun saveFavoriteIfNoExistMovies(
+        list: List<MovieModel>,
+    ): ResultAPI<List<MovieModel>> {
         return try {
             favoriteMoviesDb.favoriteMoviesDao().insertIfNoExist(list)
             ResultAPI.OnSuccess(favoriteMoviesDb.favoriteMoviesDao().getAll())

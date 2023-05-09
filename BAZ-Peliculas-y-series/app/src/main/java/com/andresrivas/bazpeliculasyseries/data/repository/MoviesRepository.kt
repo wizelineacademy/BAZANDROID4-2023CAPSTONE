@@ -8,38 +8,65 @@ import com.andresrivas.bazpeliculasyseries.domain.model.MoviesPagesModel
 import com.andresrivas.bazpeliculasyseries.domain.model.MoviesVideoModel
 import com.andresrivas.bazpeliculasyseries.injection.MoviesRepositoryRemote
 import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
+import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class MoviesRepository @Inject constructor(
     @MoviesRepositoryRemote val remoteDataSource: MoviesDataSource,
-    private val localDataSource: MoviesLocalDataSource
+    private val localDataSource: MoviesLocalDataSource,
 ) {
 
     fun getMoviesNowPlaying(): Flow<ResultAPI<MoviesPagesModel>> = flow {
-        val playingNowMovies = remoteDataSource.getMoviesNowPlaying()
+        var playingNowMovies = remoteDataSource.getMoviesNowPlaying()
         when (playingNowMovies) {
             is ResultAPI.OnSuccess -> {
                 savePlayingNowMoviesLocal(playingNowMovies.data.resultList)
             }
-            else -> {}
+            else -> {
+                when (val result = localDataSource.getNowPlayingMovies()) {
+                    is ResultAPI.OnFailure -> {
+                        playingNowMovies = ResultAPI.OnFailure(result.exception)
+                    }
+                    is ResultAPI.OnLoading -> {}
+                    is ResultAPI.OnSuccess -> {
+                        playingNowMovies =
+                            ResultAPI.OnSuccess(MoviesPagesModel(resultList = result.data))
+                    }
+                }
+            }
         }
         emit(playingNowMovies)
     }
 
-    fun getLatestMovies(): Flow<ResultAPI<LatestMoviesModel>> = flow {
-        emit(remoteDataSource.getLatestMovies())
+    fun getLatestMovies(): Single<ResultAPI<LatestMoviesModel>> {
+        return remoteDataSource.getLatestMovies()
     }
 
     fun getMoviesTopRated(): Flow<ResultAPI<MoviesPagesModel>> = flow {
-        emit(remoteDataSource.getMoviesTopRated())
+        var topRatedMovies = remoteDataSource.getMoviesTopRated()
+        when (topRatedMovies) {
+            is ResultAPI.OnSuccess -> {
+                saveTopRatedMoviesLocal(topRatedMovies.data.resultList)
+            }
+            else -> {
+                when (val result = localDataSource.getTopRatedMovies()) {
+                    is ResultAPI.OnFailure -> topRatedMovies = ResultAPI.OnFailure(result.exception)
+                    is ResultAPI.OnLoading -> {}
+                    is ResultAPI.OnSuccess -> {
+                        topRatedMovies =
+                            ResultAPI.OnSuccess(MoviesPagesModel(resultList = result.data))
+                    }
+                }
+            }
+        }
+        emit(topRatedMovies)
     }
 
     fun getMoviesTrending(): Flow<ResultAPI<MoviesPagesModel>> = flow {
         emit(remoteDataSource.getMoviesTrending())
     }
-
 
     fun getMoviesVideo(movieId: String): Flow<ResultAPI<MoviesVideoModel>> = flow {
         emit(remoteDataSource.getMoviesVideo(movieId))
@@ -47,6 +74,10 @@ class MoviesRepository @Inject constructor(
 
     suspend fun savePlayingNowMoviesLocal(movies: List<MovieModel>): ResultAPI<List<MovieModel>> {
         return localDataSource.saveMoviesPlayingNow(movies)
+    }
+
+    suspend fun saveTopRatedMoviesLocal(movies: List<MovieModel>): ResultAPI<List<MovieModel>> {
+        return localDataSource.saveTopRatedMovies(movies)
     }
 
     fun saveFavorites(movies: List<MovieModel>): Flow<ResultAPI<List<MovieModel>>> = flow {

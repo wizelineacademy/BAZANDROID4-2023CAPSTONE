@@ -2,7 +2,7 @@ package com.andresrivas.bazpeliculasyseries.domain.model
 
 class MoviesVideoModel(
     var id: Int = 0,
-    var resultList: List<MoviesVideoResultModel> = emptyList()
+    var resultList: List<MoviesVideoResultModel> = emptyList(),
 )
 
 data class MoviesVideoResultModel(
@@ -11,5 +11,5 @@ data class MoviesVideoResultModel(
     var name: String = "",
     var site: String = "",
     var size: Int = 0,
-    var type: String = ""
+    var type: String = "",
 )

@@ -9,6 +9,6 @@ import com.andresrivas.bazpeliculasyseries.domain.model.MovieModel
     entities = [MovieModel::class],
     version = 1,
 )
-abstract class FavoriteMoviesDb : RoomDatabase() {
-    abstract fun favoriteMoviesDao(): MovieDao
+abstract class NowPlayingMoviesDb : RoomDatabase() {
+    abstract fun movieDao(): MovieDao
 }

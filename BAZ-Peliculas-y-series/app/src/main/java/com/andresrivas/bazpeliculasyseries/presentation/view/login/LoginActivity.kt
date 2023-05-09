@@ -1,7 +1,7 @@
 package com.andresrivas.bazpeliculasyseries.presentation.view.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.andresrivas.bazpeliculasyseries.R
 import dagger.hilt.android.AndroidEntryPoint
 

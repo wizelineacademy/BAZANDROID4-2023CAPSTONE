@@ -27,7 +27,7 @@ class NowPlayingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentNowPlayingBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -37,7 +37,11 @@ class NowPlayingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         configRecyclerView()
         playingNowViewModel.getNowPlayingMovies()
-        binding.swipeRefreshLayout.setOnRefreshListener { playingNowViewModel.getNowPlayingMovies() }
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            playingNowViewModel.getNowPlayingMovies()
+        }
+
         playingNowViewModel.movies.observe(viewLifecycleOwner) {
             when (it) {
                 is ResultAPI.OnSuccess -> {
@@ -53,12 +57,14 @@ class NowPlayingFragment : Fragment() {
         }
 
         moviesAdapter.setOnMovieItemClickListener { trendingMoviesResultModel ->
-            startActivity(Intent(requireContext(), MovieDetailActivity::class.java).apply {
-                putExtra(
-                    MovieDetailActivity.MOVIE_RESULT_MOVIE_INFO,
-                    Gson().toJson(trendingMoviesResultModel)
-                )
-            })
+            startActivity(
+                Intent(requireContext(), MovieDetailActivity::class.java).apply {
+                    putExtra(
+                        MovieDetailActivity.MOVIE_RESULT_MOVIE_INFO,
+                        Gson().toJson(trendingMoviesResultModel),
+                    )
+                },
+            )
         }
     }
 

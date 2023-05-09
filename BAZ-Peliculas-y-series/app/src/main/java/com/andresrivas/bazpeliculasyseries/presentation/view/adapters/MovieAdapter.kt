@@ -11,19 +11,19 @@ import com.andresrivas.bazpeliculasyseries.utilities.Constants.Companion.TheMovi
 import com.andresrivas.bazpeliculasyseries.utilities.fromUrl
 
 class MovieAdapter(
-    private var onMovieItemClickListener: OnMovieItemClickListener? = null
+    private var onMovieItemClickListener: OnMovieItemClickListener? = null,
 ) : ListAdapter<MovieModel, MovieAdapter.ViewHolder>(
     object : DiffUtil.ItemCallback<MovieModel>() {
         override fun areItemsTheSame(
             oldItem: MovieModel,
-            newItem: MovieModel
+            newItem: MovieModel,
         ): Boolean = oldItem.apiId == newItem.apiId
 
         override fun areContentsTheSame(
             oldItem: MovieModel,
-            newItem: MovieModel
+            newItem: MovieModel,
         ): Boolean = oldItem == newItem
-    }
+    },
 ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -43,7 +43,7 @@ class MovieAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
             result: MovieModel,
-            onMovieItemClickListener: OnMovieItemClickListener? = null
+            onMovieItemClickListener: OnMovieItemClickListener? = null,
         ) {
             binding.apply {
                 movieImageView.fromUrl(TheMovieDBPosterBaseURL.plus(result.posterPath))

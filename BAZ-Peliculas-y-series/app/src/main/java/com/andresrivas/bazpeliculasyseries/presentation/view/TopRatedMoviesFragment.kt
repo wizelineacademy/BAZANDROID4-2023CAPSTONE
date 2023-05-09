@@ -27,7 +27,7 @@ class TopRatedMoviesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentTopRatedBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -48,19 +48,19 @@ class TopRatedMoviesFragment : Fragment() {
                     binding.swipeRefreshLayout.isRefreshing = false
                     Snackbar.make(binding.root, "Couldn't load movies", Toast.LENGTH_SHORT).show()
                 }
-                is ResultAPI.OnLoading -> {
-
-                }
+                is ResultAPI.OnLoading -> {}
             }
         }
 
         moviesAdapter.setOnMovieItemClickListener { trendingMoviesResultModel ->
-            startActivity(Intent(requireContext(), MovieDetailActivity::class.java).apply {
-                putExtra(
-                    MovieDetailActivity.MOVIE_RESULT_MOVIE_INFO,
-                    Gson().toJson(trendingMoviesResultModel)
-                )
-            })
+            startActivity(
+                Intent(requireContext(), MovieDetailActivity::class.java).apply {
+                    putExtra(
+                        MovieDetailActivity.MOVIE_RESULT_MOVIE_INFO,
+                        Gson().toJson(trendingMoviesResultModel),
+                    )
+                },
+            )
         }
     }
 

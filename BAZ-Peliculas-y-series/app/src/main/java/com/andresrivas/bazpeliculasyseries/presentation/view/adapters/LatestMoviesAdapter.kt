@@ -11,19 +11,19 @@ import com.andresrivas.bazpeliculasyseries.utilities.Constants
 import com.andresrivas.bazpeliculasyseries.utilities.fromUrl
 
 class LatestMoviesAdapter(
-    private var onMovieItemClickListener: OnMovieItemClickListener? = null
+    private var onMovieItemClickListener: OnMovieItemClickListener? = null,
 ) : ListAdapter<LatestMoviesModel, LatestMoviesAdapter.ViewHolder>(
     object : DiffUtil.ItemCallback<LatestMoviesModel>() {
         override fun areItemsTheSame(
             oldItem: LatestMoviesModel,
-            newItem: LatestMoviesModel
+            newItem: LatestMoviesModel,
         ): Boolean = oldItem.id == newItem.id
 
         override fun areContentsTheSame(
             oldItem: LatestMoviesModel,
-            newItem: LatestMoviesModel
+            newItem: LatestMoviesModel,
         ): Boolean = oldItem == newItem
-    }
+    },
 ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,10 +39,12 @@ class LatestMoviesAdapter(
         onMovieItemClickListener = listener
     }
 
-    inner class ViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(
+        private val binding: ItemMovieBinding,
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
             result: LatestMoviesModel,
-            onMovieItemClickListener: OnMovieItemClickListener? = null
+            onMovieItemClickListener: OnMovieItemClickListener? = null,
         ) {
             binding.apply {
                 movieImageView.fromUrl(Constants.TheMovieDBPosterBaseURL.plus(result.posterPath))

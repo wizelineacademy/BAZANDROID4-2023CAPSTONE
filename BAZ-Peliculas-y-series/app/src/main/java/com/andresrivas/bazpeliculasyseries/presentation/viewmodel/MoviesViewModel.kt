@@ -1,5 +1,6 @@
 package com.andresrivas.bazpeliculasyseries.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,10 +8,16 @@ import com.andresrivas.bazpeliculasyseries.domain.model.LatestMoviesModel
 import com.andresrivas.bazpeliculasyseries.domain.model.MovieModel
 import com.andresrivas.bazpeliculasyseries.domain.model.MoviesPagesModel
 import com.andresrivas.bazpeliculasyseries.domain.model.MoviesVideoModel
-import com.andresrivas.bazpeliculasyseries.domain.usecases.*
+import com.andresrivas.bazpeliculasyseries.domain.usecases.FavoritesUseCase
+import com.andresrivas.bazpeliculasyseries.domain.usecases.GetLatestMoviesUseCase
+import com.andresrivas.bazpeliculasyseries.domain.usecases.GetMovieVideoUseCase
+import com.andresrivas.bazpeliculasyseries.domain.usecases.GetNowPlayingUseCase
+import com.andresrivas.bazpeliculasyseries.domain.usecases.GetTopRatedUseCase
 import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
 import com.andresrivas.bazpeliculasyseries.utilities.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,8 +28,10 @@ class MoviesViewModel @Inject constructor(
     private val getPlayingNowUseCase: GetNowPlayingUseCase,
     private val getMovieVideoUseCase: GetMovieVideoUseCase,
     private val getTopRatedUseCase: GetTopRatedUseCase,
-    private val favoritesUseCase: FavoritesUseCase
+    private val favoritesUseCase: FavoritesUseCase,
 ) : ViewModel() {
+
+    private val disposable = CompositeDisposable()
 
     private val _latestMovies = SingleLiveEvent<ResultAPI<LatestMoviesModel>>()
     val latestMovies: LiveData<ResultAPI<LatestMoviesModel>> get() = _latestMovies
@@ -40,9 +49,16 @@ class MoviesViewModel @Inject constructor(
     val isFavorite: LiveData<ResultAPI<Boolean>> = _isFavorite
 
     fun getLatestMovies() {
-        viewModelScope.launch(Dispatchers.IO) {
-            latestMoviesUseCase.execute().collect { _latestMovies.postValue(it) }
-        }
+        disposable.add(
+            latestMoviesUseCase.execute()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.computation())
+                .subscribe({
+                    _latestMovies.postValue(it)
+                }, { error ->
+                    Log.e("MoviesViewModel", "Error".plus(error))
+                }),
+        )
     }
 
     fun getNowPlayingMovies() {

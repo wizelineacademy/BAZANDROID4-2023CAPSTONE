@@ -25,8 +25,9 @@ class PasswordLoginFragment : Fragment() {
     private val viewModel: PasswordLoginViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentPasswordLoginBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -51,9 +52,9 @@ class PasswordLoginFragment : Fragment() {
         binding.googleLoginButton.setOnClickListener {
             AuthenticationManager.Builder(
                 registry = requireActivity().activityResultRegistry,
-                context = requireActivity().applicationContext
+                context = requireActivity().applicationContext,
             ).addSignInProviderType(
-                SignInProviderType.GoogleSignIn
+                SignInProviderType.GoogleSignIn,
             ).addSuccessCallback {
                 startActivity(Intent(requireContext(), MainActivity::class.java))
                 requireActivity().finishAffinity()
@@ -65,11 +66,15 @@ class PasswordLoginFragment : Fragment() {
         binding.emailLoginButton.setOnClickListener {
             AuthenticationManager.Builder(
                 registry = requireActivity().activityResultRegistry,
-                context = requireActivity().applicationContext
+                context = requireActivity().applicationContext,
             ).addSignInProviderType(
-                SignInProviderType.EmailSignIn
+                SignInProviderType.EmailSignIn,
             ).addSuccessCallback {
-                Toast.makeText(requireContext(), "Login success! ${it.email}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Login success! ${it.email}",
+                    Toast.LENGTH_SHORT,
+                ).show()
             }.addFailCallback {
                 Toast.makeText(requireContext(), "Failure :'( $it", Toast.LENGTH_SHORT).show()
             }.build().launch()
@@ -91,7 +96,7 @@ class PasswordLoginFragment : Fragment() {
                     override fun onAnimationStart(p0: Animation?) {}
                     override fun onAnimationRepeat(p0: Animation?) {}
                 })
-            }
+            },
         )
     }
 }

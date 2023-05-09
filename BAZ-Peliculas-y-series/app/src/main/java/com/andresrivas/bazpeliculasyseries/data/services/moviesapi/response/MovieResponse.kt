@@ -7,7 +7,7 @@ data class MovieResponse(
     @SerializedName("page") var page: Int?,
     @SerializedName("results") var resultList: List<MovieResult?> = emptyList(),
     @SerializedName("total_pages") var totalPages: Int?,
-    @SerializedName("total_results") var totalResults: Int?
+    @SerializedName("total_results") var totalResults: Int?,
 )
 
 data class MovieResult(
@@ -24,10 +24,10 @@ data class MovieResult(
     @SerializedName("title") var title: String?,
     @SerializedName("video") var video: Boolean?,
     @SerializedName("vote_average") var voteAverage: Double?,
-    @SerializedName("vote_count") var voteCount: Double?
+    @SerializedName("vote_count") var voteCount: Double?,
 )
 
 data class Dates(
     @SerializedName("maximum") var maximum: String?,
-    @SerializedName("minimum") var minimum: String?
+    @SerializedName("minimum") var minimum: String?,
 )

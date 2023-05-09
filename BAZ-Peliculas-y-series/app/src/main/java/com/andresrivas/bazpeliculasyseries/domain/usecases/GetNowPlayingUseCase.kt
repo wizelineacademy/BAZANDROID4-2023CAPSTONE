@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetNowPlayingUseCase @Inject constructor(
-    private val playingNowRepository: MoviesRepository
+    private val playingNowRepository: MoviesRepository,
 ) : UseCase<Nothing, MoviesPagesModel> {
     override fun execute(params: Nothing?): Flow<ResultAPI<MoviesPagesModel>> {
         return playingNowRepository.getMoviesNowPlaying()

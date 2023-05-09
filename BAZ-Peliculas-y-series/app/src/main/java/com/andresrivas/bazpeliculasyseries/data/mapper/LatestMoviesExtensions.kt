@@ -19,18 +19,22 @@ fun LatestMoviesResponse.transformToDomain(): LatestMoviesModel {
         overview.orEmpty(),
         popularity ?: 0,
         posterPath.orEmpty(),
-        productionCompanies?.map { it?.transformToDomain() ?: LatestMoviesModel.ProductionCompanies() } ?: arrayListOf(),
+        productionCompanies?.map {
+            it?.transformToDomain() ?: LatestMoviesModel.ProductionCompanies()
+        } ?: arrayListOf(),
         productionCountries?.map { it.orEmpty() } ?: arrayListOf(),
         releaseDate.orEmpty(),
         revenue ?: 0,
         runtime ?: 0,
-        spokenLanguages?.map { it?.transformToDomain() ?: LatestMoviesModel.SpokenLanguages() } ?: arrayListOf(),
+        spokenLanguages?.map {
+            it?.transformToDomain() ?: LatestMoviesModel.SpokenLanguages()
+        } ?: arrayListOf(),
         status.orEmpty(),
         tagline.orEmpty(),
         title.orEmpty(),
         video ?: false,
         voteAverage ?: 0,
-        voteCount ?: 0
+        voteCount ?: 0,
     )
 }
 
@@ -43,7 +47,7 @@ fun LatestMoviesResponse.ProductionCompanies.transformToDomain(): LatestMoviesMo
         id ?: 0,
         logoPath.orEmpty(),
         name.orEmpty(),
-        originCountry.orEmpty()
+        originCountry.orEmpty(),
     )
 }
 
@@ -51,11 +55,10 @@ fun LatestMoviesResponse.SpokenLanguages.transformToDomain(): LatestMoviesModel.
     return LatestMoviesModel.SpokenLanguages(
         englishName.orEmpty(),
         iso.orEmpty(),
-        name.orEmpty()
+        name.orEmpty(),
     )
 }
 
 fun LatestMoviesModel.transformToDetail(): MovieModel {
     return MovieModel(id = id, apiId = id.toString(), overView = overview, title = title)
 }
-

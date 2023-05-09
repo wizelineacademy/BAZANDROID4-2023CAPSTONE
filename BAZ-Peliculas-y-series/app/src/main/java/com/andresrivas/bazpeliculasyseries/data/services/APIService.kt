@@ -3,6 +3,7 @@ package com.andresrivas.bazpeliculasyseries.data.services
 import com.andresrivas.bazpeliculasyseries.data.services.moviesapi.response.LatestMoviesResponse
 import com.andresrivas.bazpeliculasyseries.data.services.moviesapi.response.MovieResponse
 import com.andresrivas.bazpeliculasyseries.data.services.moviesapi.response.MovieVideoResponse
+import io.reactivex.rxjava3.core.Single
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,11 +17,11 @@ interface APIService {
 
     @GET("movie/{movieId}/videos")
     suspend fun getTrendingMoviesVideo(
-        @Path("movieId") movieId: String
+        @Path("movieId") movieId: String,
     ): Response<MovieVideoResponse>
 
     @GET("movie/latest")
-    suspend fun getLatestMovies(): Response<LatestMoviesResponse>
+    fun getLatestMovies(): Single<Response<LatestMoviesResponse>>
 
     @GET("movie/top_rated")
     suspend fun getTopRatedMovies(): Response<MovieResponse>
