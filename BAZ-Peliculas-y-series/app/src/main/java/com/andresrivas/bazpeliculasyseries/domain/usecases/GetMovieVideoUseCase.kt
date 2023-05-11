@@ -2,8 +2,8 @@ package com.andresrivas.bazpeliculasyseries.domain.usecases
 
 import com.andresrivas.bazpeliculasyseries.common.domain.UseCase
 import com.andresrivas.bazpeliculasyseries.data.repository.MoviesRepository
-import com.andresrivas.bazpeliculasyseries.domain.model.MoviesVideoModel
-import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
+import com.andresrivas.common.model.MoviesVideoModel
+import com.andresrivas.common.utilities.ResultAPI
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

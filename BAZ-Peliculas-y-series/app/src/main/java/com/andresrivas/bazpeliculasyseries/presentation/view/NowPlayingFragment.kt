@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.andresrivas.bazpeliculasyseries.databinding.FragmentNowPlayingBinding
 import com.andresrivas.bazpeliculasyseries.presentation.view.adapters.MovieAdapter
 import com.andresrivas.bazpeliculasyseries.presentation.viewmodel.MoviesViewModel
-import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
+import com.andresrivas.common.utilities.ResultAPI
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint

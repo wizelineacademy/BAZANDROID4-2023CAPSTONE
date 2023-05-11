@@ -1,13 +1,13 @@
 package com.andresrivas.bazpeliculasyseries.data.repository
 
-import com.andresrivas.bazpeliculasyseries.data.repository.datasource.MoviesDataSource
-import com.andresrivas.bazpeliculasyseries.data.repository.datasource.MoviesLocalDataSource
 import com.andresrivas.bazpeliculasyseries.domain.model.LatestMoviesModel
 import com.andresrivas.bazpeliculasyseries.domain.model.MovieModel
 import com.andresrivas.bazpeliculasyseries.domain.model.MoviesPagesModel
-import com.andresrivas.bazpeliculasyseries.domain.model.MoviesVideoModel
 import com.andresrivas.bazpeliculasyseries.injection.MoviesRepositoryRemote
-import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
+import com.andresrivas.common.model.MoviesVideoModel
+import com.andresrivas.common.utilities.ResultAPI
+import com.andresrivas.localdatasource.datasource.MoviesLocalDataSource
+import com.andresrivas.remotedatasource.services.datasource.MoviesDataSource
 import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

@@ -1,7 +1,7 @@
 package com.andresrivas.bazpeliculasyseries.domain.usecases
 
 import com.andresrivas.bazpeliculasyseries.data.repository.MoviesRepository
-import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
+import com.andresrivas.common.utilities.ResultAPI
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -26,23 +26,25 @@ internal class FavoritesUseCaseTest {
     @Test
     fun `when api doesn't return something use case will be return OnFailure`() = runBlocking {
         // Given
-        coEvery { moviesRepository.getMoviesNowPlaying() } returns flow {
+        coEvery { moviesRepository.getMoviesVideo("1") } returns flow {
             ResultAPI.OnFailure(Exception())
         }
         // When
         favoritesUseCase.execute()
         // Then
-        coVerify(exactly = 1) { moviesRepository.getMoviesNowPlaying() }
+        coVerify(exactly = 1) { moviesRepository.getMoviesVideo("1") }
     }
 
     @Test
     fun `Given null params When use case is called Then return OnFailure for null params`() =
         runBlocking {
             // Given
-            // coEvery { moviesRepository.getMoviesVideo("") } returns flow { ResultAPI.OnFailure(Exception()) }
+            coEvery { moviesRepository.getMoviesVideo("") } returns flow {
+                ResultAPI.OnFailure(Exception())
+            }
             // When
             favoritesUseCase.execute()
             // Then
-            coVerify(exactly = 1) { ResultAPI.OnFailure(NullPointerException()) }
+            coVerify(exactly = 1) { ResultAPI.OnFailure(Exception()) }
         }
 }

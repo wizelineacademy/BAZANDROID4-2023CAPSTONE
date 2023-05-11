@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.andresrivas.bazpeliculasyseries.domain.model.MovieModel
-import com.andresrivas.bazpeliculasyseries.domain.model.MoviesVideoModel
 import com.andresrivas.bazpeliculasyseries.domain.usecases.FavoritesUseCase
 import com.andresrivas.bazpeliculasyseries.domain.usecases.GetMovieVideoUseCase
-import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
 import com.andresrivas.bazpeliculasyseries.utilities.SingleLiveEvent
+import com.andresrivas.common.model.MoviesVideoModel
+import com.andresrivas.common.utilities.ResultAPI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

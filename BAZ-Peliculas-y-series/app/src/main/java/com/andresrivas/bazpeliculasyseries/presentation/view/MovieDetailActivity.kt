@@ -33,13 +33,13 @@ import androidx.compose.ui.unit.sp
 import com.andresrivas.bazpeliculasyseries.R
 import com.andresrivas.bazpeliculasyseries.domain.model.MovieModel
 import com.andresrivas.bazpeliculasyseries.presentation.viewmodel.MovieDetailViewModel
-import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
 import com.andresrivas.bazpeliculasyseries.uicatalog.compose.Toolbar
 import com.andresrivas.bazpeliculasyseries.uicatalog.compose.model.ToolbarModel
 import com.andresrivas.bazpeliculasyseries.uicatalog.theme.BazMoviesTheme
 import com.andresrivas.bazpeliculasyseries.uicatalog.theme.DarkBlue
 import com.andresrivas.bazpeliculasyseries.uicatalog.theme.White
 import com.andresrivas.bazpeliculasyseries.utilities.Constants
+import com.andresrivas.common.utilities.ResultAPI
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.google.gson.Gson

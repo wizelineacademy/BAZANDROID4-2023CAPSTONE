@@ -1,7 +1,7 @@
 package com.andresrivas.bazpeliculasyseries.domain.usecases
 
 import com.andresrivas.bazpeliculasyseries.data.repository.MoviesRepository
-import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
+import com.andresrivas.common.utilities.ResultAPI
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
