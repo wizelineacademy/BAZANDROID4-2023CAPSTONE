@@ -1,0 +1,7 @@
+package com.andresrivas.remotedatasource.services
+
+class Constants {
+    companion object {
+        const val TheMovieDBAPIKey = "15c5e8d6cc45dcc891087fddd84bdaa9"
+    }
+}

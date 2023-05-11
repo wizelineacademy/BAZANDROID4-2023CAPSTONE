@@ -1,2 +1,5 @@
 rootProject.name = "BAZ Películas y series"
 include ':app'
+include ':app:LocalDataSource'
+include ':app:RemoteDataSource'
+include ':app:Common'

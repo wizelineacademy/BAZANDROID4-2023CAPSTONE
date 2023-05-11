@@ -37,7 +37,9 @@ class AuthenticationManager(builder: Builder) {
                         .addOnCompleteListener {
                             if (it.isSuccessful) {
                                 successProcess?.invoke(AccountModel(account.email.orEmpty()))
-                            } else failProcess?.invoke("Sign in not success")
+                            } else {
+                                failProcess?.invoke("Sign in not success")
+                            }
                         }
                 }
             } catch (e: Exception) {

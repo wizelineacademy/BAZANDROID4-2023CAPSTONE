@@ -9,11 +9,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.andresrivas.bazpeliculasyseries.data.mapper.transformToDetail
 import com.andresrivas.bazpeliculasyseries.databinding.FragmentLatestMoviesBinding
 import com.andresrivas.bazpeliculasyseries.presentation.view.adapters.LatestMoviesAdapter
 import com.andresrivas.bazpeliculasyseries.presentation.viewmodel.MoviesViewModel
-import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
+import com.andresrivas.common.utilities.ResultAPI
+import com.andresrivas.remotedatasource.services.mapper.transformToDetail
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint

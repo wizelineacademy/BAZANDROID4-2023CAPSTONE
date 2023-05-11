@@ -1,6 +1,6 @@
 package com.andresrivas.bazpeliculasyseries.common.domain
 
-import com.andresrivas.bazpeliculasyseries.tools.ResultAPI
+import com.andresrivas.common.utilities.ResultAPI
 import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 
